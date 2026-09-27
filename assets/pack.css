@@ -297,15 +297,18 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 14px;
+      table-layout: auto;
     }
 
-    .scroll table { min-width: 560px; }
+    .scroll table { min-width: 0; }
 
     th, td {
       border: 0.6px solid #b7c0c8;
       padding: 7px 8px;
       vertical-align: top;
       text-align: left;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     th {
@@ -673,8 +676,13 @@
       h2 { font-size: 13.5pt; margin-bottom: 4px; }
       h3 { font-size: 10pt; margin: 6px 0 3px; }
       p { margin: 0 0 5px; }
-      table { font-size: 7.6pt; min-width: 0; width: 100%; }
-      .scroll table { min-width: 0; }
+      table { font-size: 7.6pt; min-width: 0 !important; width: 100% !important; table-layout: fixed; }
+      .scroll table { min-width: 0 !important; }
+      th, td, td.num, th.num {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        white-space: normal;
+      }
       th { font-size: 6.8pt; padding: 2.8px 4.5px; }
       td { padding: 2.8px 4.5px; }
       .fig {
@@ -714,3 +722,45 @@
       flex: 0 0 15px;
     }
     .weigh-actual { min-width: 72px; background: #fffef6 !important; }
+
+    body.pdf-export {
+      background: #fff !important;
+      padding: 0 !important;
+      overflow: visible !important;
+    }
+    body.pdf-export .util-bar,
+    body.pdf-export .site-header,
+    body.pdf-export .site-footer,
+    body.pdf-export .save-pdf-sticky {
+      display: none !important;
+    }
+    body.pdf-export .sheet-stack {
+      width: 794px;
+      max-width: 794px;
+      padding: 0;
+      margin: 0;
+    }
+    body.pdf-export .page {
+      width: 794px;
+      max-width: 794px;
+      margin: 0 0 12px;
+      box-shadow: none;
+      overflow: visible;
+    }
+    body.pdf-export .scroll {
+      overflow: visible;
+    }
+    body.pdf-export table,
+    body.pdf-export .scroll table {
+      min-width: 0 !important;
+      width: 100% !important;
+      table-layout: fixed;
+    }
+    body.pdf-export th,
+    body.pdf-export td,
+    body.pdf-export td.num,
+    body.pdf-export th.num {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      white-space: normal;
+    }
