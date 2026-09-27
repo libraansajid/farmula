@@ -15,6 +15,14 @@
       --soft: #f3f7f4;
     }
 
+    @font-face {
+      font-family: "New Academy";
+      src: url("fonts/NewAcademy.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     img { max-width: 100%; height: auto; }
     .brand-logo {
@@ -81,6 +89,23 @@
       gap: 20px;
       padding: 12px 0;
     }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      min-width: 0;
+    }
+    .wordmark {
+      font-family: "New Academy", Impact, "Arial Black", sans-serif;
+      font-size: clamp(26px, 3vw, 36px);
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .wm-bazz { color: #ffffff; }
+    .wm-lab { color: #afafaf; }
 
     .header-logo-img {
       height: 58px;
@@ -151,6 +176,11 @@
       align-items: start;
     }
 
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
     .footer-logo {
       height: 64px;
       width: auto;
@@ -160,6 +190,7 @@
       border-radius: 0;
       object-fit: contain;
     }
+    .footer-brand .wordmark { font-size: 28px; }
 
     .site-footer strong { color: #fff; display: block; margin-bottom: 4px; }
     .site-footer p { margin: 0; font-size: 13px; }
@@ -437,6 +468,7 @@
       .site-footer-inner { grid-template-columns: 1fr; width: calc(100% - 16px); }
       .site-header-inner { width: calc(100% - 16px); flex-direction: column; align-items: flex-start; }
       .header-logo-img { height: 44px; }
+      .wordmark { font-size: 22px; }
       .toolbar, .toolbar-row { width: 100%; align-items: stretch; justify-content: flex-start; }
       .toolbar a, .toolbar button {
         flex: 1 1 calc(50% - 8px);
