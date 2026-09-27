@@ -86,11 +86,17 @@
 
     .toolbar {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 6px;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
       background: transparent;
       padding: 0;
+    }
+    .toolbar-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 4px 6px;
     }
 
     .toolbar a, .toolbar button {
@@ -416,7 +422,7 @@
       .site-footer-inner { grid-template-columns: 1fr; width: calc(100% - 16px); }
       .site-header-inner { width: calc(100% - 16px); flex-direction: column; align-items: flex-start; }
       .header-logo-img { height: 44px; }
-      .toolbar { justify-content: flex-start; width: 100%; }
+      .toolbar, .toolbar-row { width: 100%; align-items: stretch; justify-content: flex-start; }
       .toolbar a, .toolbar button {
         flex: 1 1 calc(50% - 8px);
         text-align: center;
