@@ -31,9 +31,9 @@
 
     body {
       background:
-        radial-gradient(1100px 480px at 8% -8%, rgba(96, 143, 62, 0.22), transparent 52%),
-        radial-gradient(900px 420px at 92% 0%, rgba(54, 173, 91, 0.1), transparent 48%),
-        #070b12;
+        radial-gradient(1100px 480px at 8% -8%, rgba(96, 143, 62, 0.16), transparent 52%),
+        radial-gradient(900px 420px at 92% 0%, rgba(54, 173, 91, 0.08), transparent 48%),
+        #1c2533;
       color: var(--ink);
       font-family: Arial, Helvetica, "Segoe UI", sans-serif;
       font-size: 16px;
@@ -53,7 +53,7 @@
       justify-content: space-between;
       gap: 12px;
       flex-wrap: wrap;
-      padding: 8px 18px;
+      padding: 8px 32px;
       padding-top: calc(8px + env(safe-area-inset-top));
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
@@ -64,7 +64,7 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(7, 11, 18, 0.92);
+      background: #070b12;
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(96, 143, 62, 0.45);
@@ -72,14 +72,14 @@
     }
 
     .site-header-inner {
-      width: min(210mm, calc(100% - 20px));
+      width: min(1400px, calc(100% - 32px));
       max-width: 100%;
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      padding: 10px 0;
+      gap: 20px;
+      padding: 12px 0;
     }
 
     .header-logo-img {
@@ -107,27 +107,32 @@
 
     .toolbar a, .toolbar button {
       appearance: none;
-      border: 0;
-      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.07);
       color: #e7eee4;
       font-weight: 700;
       font-family: inherit;
       font-size: 13px;
-      padding: 8px 10px;
-      border-radius: 2px;
+      padding: 8px 14px;
+      border-radius: 6px;
       cursor: pointer;
       text-decoration: none;
       white-space: nowrap;
     }
 
-    .toolbar a:hover, .toolbar button:hover { color: #9dce6a; }
+    .toolbar a:hover, .toolbar button:hover {
+      color: #fff;
+      background: rgba(96, 143, 62, 0.35);
+      border-color: rgba(157, 206, 106, 0.55);
+    }
 
     .toolbar .ghost {
       background: var(--green);
+      border-color: var(--green);
       color: #fff;
     }
 
-    .toolbar .ghost:hover { background: var(--green-dark); color: #fff; }
+    .toolbar .ghost:hover { background: var(--green-dark); border-color: var(--green-dark); color: #fff; }
 
     .sheet-stack { padding: 16px 0 24px; }
 
@@ -327,7 +332,11 @@
     .badge-best { background: var(--green); }
     h2 .badge-new, h3 .badge-new, h2 .badge-best, h3 .badge-best { margin-left: 8px; }
     tr.is-new td:first-child { font-weight: 700; }
-    .toolbar a.best-nav { color: #9dce6a; }
+    .toolbar a.best-nav {
+      color: #dff5c8;
+      background: rgba(96, 143, 62, 0.28);
+      border-color: rgba(157, 206, 106, 0.5);
+    }
     .box.best { background: #eef8f1; border: 2px solid var(--green); }
 
     .cover { padding: 0; overflow-x: hidden; }
@@ -435,8 +444,9 @@
         white-space: normal;
         line-height: 1.2;
         font-size: 12px;
-        background: rgba(255, 255, 255, 0.06);
+        background: rgba(255, 255, 255, 0.08);
         color: #e7eee4;
+        border-color: rgba(255, 255, 255, 0.14);
       }
       .toolbar .ghost { background: var(--green); }
       .cover-hero { height: 220px; }
@@ -485,7 +495,11 @@
       .grid-2, .grid-3 { gap: 8px; }
     }
 
-    .toolbar a.current { color: #9dce6a; }
+    .toolbar a.current {
+      color: #fff;
+      background: rgba(96, 143, 62, 0.45);
+      border-color: #9dce6a;
+    }
 
     .check {
       display: flex;
