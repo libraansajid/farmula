@@ -26,7 +26,7 @@ const jobs = [
 
 async function renderFile(browser, htmlName, outRel) {
   const page = await browser.newPage();
-  await page.setViewport({ width: 980, height: 1600, deviceScaleFactor: 1 });
+  await page.setViewport({ width: 794, height: 2000, deviceScaleFactor: 1 });
   await page.emulateMediaType("screen");
   await page.goto(pathToFileURL(path.join(root, htmlName)).href, {
     waitUntil: "networkidle0",
@@ -53,27 +53,18 @@ async function renderFile(browser, htmlName, outRel) {
 
   await page.addStyleTag({
     content: `
+      @page { margin: 0 !important; }
       html, body { background: #fff !important; padding: 0 !important; margin: 0 !important; }
-      .sheet-stack { padding: 0 !important; }
+      .sheet-stack { padding: 0 !important; margin: 0 !important; width: 794px !important; }
       .page {
-        width: 210mm !important;
-        max-width: 210mm !important;
-        margin: 0 auto !important;
+        width: 794px !important;
+        max-width: 794px !important;
+        margin: 0 !important;
         box-shadow: none !important;
-      }
-      .cover-hero { background: #08182b !important; height: auto !important; }
-      .cover-hero img {
-        display: block !important;
-        width: 100% !important;
-        height: auto !important;
-        object-fit: contain !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
       }
       img, .fig {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
-        visibility: visible !important;
       }
     `
   });
@@ -84,7 +75,7 @@ async function renderFile(browser, htmlName, outRel) {
   const merged = await PDFDocument.create();
 
   for (const id of ids) {
-    const heightPx = await page.evaluate((keep) => {
+    const box = await page.evaluate((keep) => {
       document.querySelectorAll(".sheet-stack .page").forEach((el, i) => {
         const key = el.id || "sheet-" + i;
         el.style.display = key === keep ? "block" : "none";
@@ -93,16 +84,16 @@ async function renderFile(browser, htmlName, outRel) {
       const shown = Array.from(document.querySelectorAll(".sheet-stack .page")).find((el, i) => {
         return (el.id || "sheet-" + i) === keep;
       });
-      return shown ? shown.scrollHeight : 800;
+      if (!shown) return { w: 794, h: 800 };
+      return { w: shown.offsetWidth, h: shown.scrollHeight };
     }, id);
 
-    const heightMm = Math.ceil((heightPx * 25.4) / 96 + 10);
     const buf = await page.pdf({
       printBackground: true,
       preferCSSPageSize: false,
-      width: "210mm",
-      height: heightMm + "mm",
-      margin: { top: "4mm", right: "6mm", bottom: "4mm", left: "6mm" },
+      width: box.w + "px",
+      height: box.h + "px",
+      margin: { top: "0", right: "0", bottom: "0", left: "0" },
       pageRanges: "1"
     });
     const part = await PDFDocument.load(buf);
