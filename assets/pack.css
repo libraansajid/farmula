@@ -33,7 +33,7 @@
 
     html {
       scroll-behavior: smooth;
-      overflow-x: hidden;
+      overflow-x: clip;
       max-width: 100%;
     }
 
@@ -46,8 +46,9 @@
       font-family: Arial, Helvetica, "Segoe UI", sans-serif;
       font-size: 16px;
       line-height: 1.45;
-      overflow-x: hidden;
+      overflow-x: clip;
       max-width: 100%;
+      padding-bottom: 72px;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
@@ -163,7 +164,7 @@
       position: fixed;
       right: 16px;
       bottom: calc(16px + env(safe-area-inset-bottom));
-      z-index: 40;
+      z-index: 50;
       appearance: none;
       border: 1px solid var(--green);
       background: var(--green);
@@ -175,6 +176,8 @@
       border-radius: 8px;
       cursor: pointer;
       box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
     }
     .save-pdf-sticky:hover {
       background: var(--green-dark);
@@ -484,7 +487,7 @@
     }
 
     @media (max-width: 560px) {
-      body { font-size: 15px; }
+      body { font-size: 15px; padding-bottom: 76px; }
       .page { width: calc(100% - 12px); margin-bottom: 12px; }
       .page-inner, .cover-body { padding: 16px 14px 20px; }
       .site-footer-inner { grid-template-columns: 1fr; width: calc(100% - 16px); }
@@ -512,7 +515,19 @@
         color: #e7eee4;
         border-color: rgba(255, 255, 255, 0.14);
       }
-      .toolbar .ghost { background: var(--green); }
+      .toolbar .ghost { display: none; }
+      .save-pdf-sticky {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        border-radius: 0;
+        border: 0;
+        padding: 14px 16px;
+        padding-bottom: calc(14px + env(safe-area-inset-bottom));
+        font-size: 15px;
+        box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.35);
+      }
       .cover-hero { height: 220px; }
       .cover-stamp { letter-spacing: .04em; font-size: 10px; }
       .running { letter-spacing: .04em; gap: 6px; }
@@ -522,7 +537,7 @@
     }
 
     @media print {
-      html, body { background: #fff; font-size: 10.2pt; line-height: 1.38; }
+      html, body { background: #fff; font-size: 10.2pt; line-height: 1.38; padding-bottom: 0; }
       .util-bar, .site-header, .sheet-stack { padding: 0; }
       .util-bar, .site-header, .site-footer, .save-pdf-sticky { display: none !important; }
       .page {
