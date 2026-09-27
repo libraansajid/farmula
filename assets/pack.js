@@ -1,4 +1,3 @@
-var PACK_SHEET_PX = 794;
 var CSS_PX_TO_PT = 72 / 96;
 
 function setPdfBusy(busy) {
@@ -10,10 +9,16 @@ function setPdfBusy(busy) {
   });
 }
 
-function waitForImages(root) {
+function pdfLib() {
+  var ns = window.jspdf || window.jsPDF;
+  if (!ns) return null;
+  return ns.jsPDF || ns;
+}
+
+function waitImages(root) {
   return Promise.all(
     Array.prototype.slice.call(root.querySelectorAll("img")).map(function (img) {
-      if (img.complete) return Promise.resolve();
+      if (img.complete && img.naturalWidth) return Promise.resolve();
       return new Promise(function (done) {
         img.onload = img.onerror = function () { done(); };
       });
@@ -21,74 +26,111 @@ function waitForImages(root) {
   );
 }
 
-function savePackPdf() {
-  if (!window.html2canvas || !window.jspdf) {
-    window.print();
-    return;
-  }
-  exportExactPdf();
+function downloadBlob(blob, filename) {
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.rel = "noopener";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
 }
 
-function exportExactPdf() {
+function savePackPdf() {
+  var JsPDF = pdfLib();
+  if (!window.html2canvas || !JsPDF) {
+    setPdfBusy(true);
+    loadPdfLibs().then(exportWebPdf).catch(function () {
+      setPdfBusy(false);
+      alert("PDF download could not start. Refresh the page and try Save PDF again.");
+    });
+    return;
+  }
+  exportWebPdf();
+}
+
+function loadPdfLibs() {
+  function add(src) {
+    return new Promise(function (resolve, reject) {
+      var s = document.createElement("script");
+      s.src = src;
+      s.onload = resolve;
+      s.onerror = reject;
+      document.head.appendChild(s);
+    });
+  }
+  var chain = Promise.resolve();
+  if (!window.html2canvas) chain = chain.then(function () { return add("assets/html2canvas.min.js"); });
+  if (!pdfLib()) chain = chain.then(function () { return add("assets/jspdf.umd.min.js"); });
+  return chain;
+}
+
+function exportWebPdf() {
+  var JsPDF = pdfLib();
   var stack = document.querySelector(".sheet-stack");
   var pages = stack ? stack.querySelectorAll(".page") : [];
-  if (!pages.length) {
-    window.print();
+  if (!JsPDF || !window.html2canvas || !pages.length) {
+    alert("Nothing to save.");
     return;
   }
 
   setPdfBusy(true);
-  document.body.classList.add("pdf-capture");
-  window.scrollTo(0, 0);
+  var fontsReady = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
 
-  waitForImages(stack)
-    .then(function () {
-      return new Promise(function (resolve) { requestAnimationFrame(function () { resolve(); }); });
-    })
-    .then(function () {
-      return captureSheets(pages);
-    })
+  fontsReady
+    .then(function () { return waitImages(stack); })
+    .then(function () { return captureAsWeb(pages, JsPDF); })
     .then(function (pdf) {
-      pdf.save("BazzLab-Formulation-Pack.pdf");
+      downloadBlob(pdf.output("blob"), "BazzLab-Formulation-Pack.pdf");
     })
-    .catch(function () {
-      window.print();
+    .catch(function (err) {
+      console.error(err);
+      alert("PDF download failed. Refresh and try Save PDF again.");
     })
     .then(function () {
-      document.body.classList.remove("pdf-capture");
       setPdfBusy(false);
     });
 }
 
-function captureSheets(pages) {
-  var JsPDF = window.jspdf.jsPDF;
+function captureAsWeb(pages, JsPDF) {
   var pdf = null;
+  var scale = 2;
   var chain = Promise.resolve();
-  var sheetW = PACK_SHEET_PX * CSS_PX_TO_PT;
 
   Array.prototype.forEach.call(pages, function (el) {
     chain = chain.then(function () {
+      el.scrollIntoView({ block: "nearest", inline: "nearest" });
+      return new Promise(function (resolve) { setTimeout(resolve, 40); });
+    }).then(function () {
       return html2canvas(el, {
-        scale: 2,
+        scale: scale,
         useCORS: true,
+        allowTaint: true,
         backgroundColor: "#ffffff",
         logging: false,
-        letterRendering: true
-      }).then(function (canvas) {
-        var sheetH = (canvas.height / canvas.width) * sheetW;
-        var img = canvas.toDataURL("image/jpeg", 0.95);
-        if (!pdf) {
-          pdf = new JsPDF({
-            unit: "pt",
-            format: [sheetW, sheetH],
-            orientation: "p",
-            compress: true
-          });
-        } else {
-          pdf.addPage([sheetW, sheetH], "p");
+        imageTimeout: 8000,
+        onclone: function (doc) {
+          var cloned = doc.getElementById(el.id) || doc.querySelector("#" + el.id);
+          if (cloned) {
+            cloned.style.width = el.offsetWidth + "px";
+            cloned.style.maxWidth = el.offsetWidth + "px";
+            cloned.style.boxShadow = "none";
+            cloned.style.margin = "0";
+          }
         }
-        pdf.addImage(img, "JPEG", 0, 0, sheetW, sheetH, undefined, "FAST");
       });
+    }).then(function (canvas) {
+      var ptW = (canvas.width / scale) * CSS_PX_TO_PT;
+      var ptH = (canvas.height / scale) * CSS_PX_TO_PT;
+      var img = canvas.toDataURL("image/jpeg", 0.96);
+      if (!pdf) {
+        pdf = new JsPDF({ unit: "pt", format: [ptW, ptH], orientation: "p", compress: true });
+      } else {
+        pdf.addPage([ptW, ptH], "p");
+      }
+      pdf.addImage(img, "JPEG", 0, 0, ptW, ptH, undefined, "FAST");
     });
   });
 
