@@ -332,7 +332,7 @@
       right: 16px;
       z-index: 2;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       gap: 8px;
       color: #fff;
@@ -340,19 +340,6 @@
       letter-spacing: .08em;
       text-transform: uppercase;
       font-weight: 700;
-    }
-    .cover-logo-wrap {
-      flex: 0 0 auto;
-      background: #fff;
-      padding: 6px 10px;
-      border-radius: 2px;
-    }
-    .cover-logo-wrap img {
-      display: block;
-      height: 40px;
-      width: auto;
-      max-width: 200px;
-      object-fit: contain;
     }
     .cover-title {
       position: absolute;
@@ -425,7 +412,6 @@
       .toolbar .ghost { background: var(--green); }
       .cover-hero { height: 220px; }
       .cover-stamp { letter-spacing: .04em; font-size: 10px; }
-      .cover-logo-wrap img { height: 32px; max-width: 160px; }
       .running { letter-spacing: .04em; gap: 6px; }
       .running span { overflow-wrap: anywhere; }
       th, td { padding: 8px 6px; }
@@ -495,9 +481,6 @@
       <div class="cover-hero">
         <img src="assets/cover-foam-dossier.png" alt="Open-cell and closed-cell foam samples" />
         <div class="cover-stamp">
-          <div class="cover-logo-wrap">
-            <img src="assets/bazzlab-logo.png" alt="BazzLab" />
-          </div>
           <span>Rev. C · Formulation pack</span>
         </div>
         <div class="cover-title">
