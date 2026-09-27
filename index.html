@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Farmula · Open-Cell &amp; Closed-Cell Foam Formulas</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+
+    :root {
+      --navy: #0e2a47;
+      --ink: #1a1d21;
+      --muted: #5b6570;
+      --line: #c9d0d6;
+      --gold: #b0893e;
+      --gold-soft: #e8d7b0;
+      --paper: #ffffff;
+      --soft: #eef2f6;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: #5d6570;
+      color: var(--ink);
+      font-family: "Segoe UI", Calibri, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.45;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 12px;
+      padding-top: calc(10px + env(safe-area-inset-top));
+      background: #0e2a47;
+    }
+
+    .toolbar a, .toolbar button {
+      appearance: none;
+      border: 0;
+      background: #b0893e;
+      color: #fff;
+      font-weight: 700;
+      font-family: inherit;
+      font-size: 13px;
+      padding: 8px 12px;
+      border-radius: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .toolbar .ghost {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.35);
+    }
+
+    .sheet-stack { padding: 16px 0 40px; }
+
+    .page {
+      width: min(210mm, calc(100% - 20px));
+      height: auto;
+      margin: 0 auto 16px;
+      background: var(--paper);
+      box-shadow: 0 10px 28px rgba(0,0,0,.28);
+      position: relative;
+      overflow: visible;
+    }
+
+    .page-inner {
+      padding: 22px 20px 28px;
+    }
+
+    .running {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1.4px solid var(--navy);
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .running span:last-child { letter-spacing: .03em; color: var(--muted); }
+
+    .folio {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--muted);
+      border-top: 0.8px solid var(--line);
+      padding-top: 8px;
+      margin-top: 18px;
+    }
+
+    .folio b { color: var(--navy); }
+
+    h1, h2, h3 { font-weight: 700; color: var(--navy); }
+    h2 { font-size: clamp(1.35rem, 3vw, 1.7rem); letter-spacing: -.02em; margin: 0 0 6px; }
+    h3 { font-size: 1.02rem; margin: 14px 0 6px; }
+    p { margin: 0 0 8px; }
+    .lead { color: var(--muted); max-width: 70ch; }
+
+    .rule {
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent 78%);
+      margin: 6px 0 12px;
+    }
+
+    .scroll { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      min-width: 520px;
+    }
+
+    th, td {
+      border: 0.6px solid #b7c0c8;
+      padding: 7px 8px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: var(--navy);
+      color: #fff;
+      font-size: 11px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    tr:nth-child(even) td { background: #f5f7f9; }
+    td.num, th.num { text-align: right; white-space: nowrap; }
+    td.mid { text-align: center; }
+    table.tight { min-width: 0; }
+
+    .grid-2, .grid-3 { display: grid; gap: 12px; }
+    .grid-2 { grid-template-columns: 1fr 1fr; }
+    .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+    .box {
+      border: 0.7px solid var(--line);
+      padding: 12px;
+      background: var(--soft);
+    }
+
+    .box.gold { background: #fbf6ea; border-color: var(--gold-soft); }
+    .box.navy { background: var(--navy); color: #e8eef4; }
+    .box.navy h3, .box.navy b { color: #fff; }
+    .box.navy p { color: #d5dde6; }
+
+    .fig {
+      width: 100%;
+      height: auto;
+      max-height: 240px;
+      object-fit: cover;
+      display: block;
+      border: 0.6px solid var(--line);
+    }
+
+    .caption {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    .kvs { width: 100%; min-width: 0; }
+    .kvs td { border: 0; background: transparent !important; padding: 4px 0; }
+    .kvs td:first-child { color: var(--muted); width: 48%; }
+    .kvs td:last-child { font-weight: 700; color: var(--navy); }
+
+    .note {
+      font-size: 14px;
+      color: #3d4650;
+      background: #fbf6ea;
+      border-left: 3px solid var(--gold);
+      padding: 10px 12px;
+      margin-top: 12px;
+    }
+
+    .tiny { font-size: 13px; color: var(--muted); }
+
+    .cover { padding: 0; }
+    .cover-hero {
+      position: relative;
+      min-height: 240px;
+      aspect-ratio: 16 / 9;
+      max-height: 420px;
+      background: #08182b;
+    }
+    .cover-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .cover-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8,20,36,.12) 0%, rgba(8,20,36,.82) 100%);
+    }
+    .cover-stamp {
+      position: absolute;
+      top: 14px;
+      left: 16px;
+      right: 16px;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      color: #f3e6c4;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .cover-title {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      z-index: 2;
+      color: #fff;
+    }
+    .cover-title small {
+      display: block;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .cover-title h1 {
+      color: #fff;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.7rem, 5vw, 2.5rem);
+      line-height: 1.08;
+    }
+    .cover-body { padding: 20px 20px 8px; }
+
+    .toc { width: 100%; min-width: 0; border-collapse: collapse; }
+    .toc td { border: 0; background: transparent !important; padding: 10px 0; }
+    .toc tr { border-bottom: 0.6px dotted #b7c0c8; }
+    .toc .no {
+      width: 42px;
+      font-family: Georgia, serif;
+      font-size: 1.25rem;
+      color: var(--gold);
+      font-weight: 700;
+    }
+    .toc a { color: inherit; text-decoration: none; }
+    .toc .name { font-size: 1.05rem; font-weight: 700; color: var(--navy); }
+    .toc .desc { display: block; font-size: 13px; color: var(--muted); font-weight: 400; margin-top: 2px; }
+
+    @media (max-width: 820px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .cover-stamp { flex-direction: column; }
+      .fig { max-height: 200px; }
+    }
+
+    @media (max-width: 560px) {
+      body { font-size: 15px; }
+      .page { width: calc(100% - 12px); margin-bottom: 12px; }
+      .page-inner, .cover-body { padding: 16px 14px 20px; }
+      .toolbar { justify-content: flex-start; }
+      .toolbar a, .toolbar button { flex: 1 1 calc(50% - 8px); text-align: center; }
+      th, td { padding: 8px 6px; }
+      table { font-size: 13px; min-width: 480px; }
+    }
+
+    @media print {
+      html, body { background: #fff; font-size: 10.2pt; line-height: 1.38; }
+      .toolbar, .sheet-stack { padding: 0; }
+      .toolbar { display: none !important; }
+      .page {
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+        box-shadow: none;
+        overflow: hidden;
+        page-break-after: always;
+        break-after: page;
+      }
+      .page-inner { padding: 13mm 14mm 16mm; height: 100%; }
+      .cover-hero { height: 118mm; max-height: none; aspect-ratio: auto; min-height: 0; }
+      .folio {
+        position: absolute;
+        left: 14mm;
+        right: 14mm;
+        bottom: 7mm;
+        margin-top: 0;
+      }
+      h2 { font-size: 14.5pt; }
+      h3 { font-size: 10.4pt; margin: 8px 0 4px; }
+      table { font-size: 8.15pt; min-width: 0; }
+      th { font-size: 7.1pt; padding: 3.4px 5.5px; }
+      td { padding: 3.4px 5.5px; }
+      .fig { max-height: 42mm; }
+      .lead, .tiny, .caption, .note { font-size: 8.4pt; }
+      .box { padding: 8px; }
+      .grid-2, .grid-3 { gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="toolbar" aria-label="Formulation sections">
+    <a href="#page-cover">Index</a>
+    <a href="#page-oc">Open Cell</a>
+    <a href="#page-cc">Closed Cell</a>
+    <a href="#page-lab">Lab Method</a>
+    <button type="button" class="ghost" onclick="window.print()">Save PDF</button>
+  </nav>
+
+  <div class="sheet-stack">
+
+    <section class="page cover" id="page-cover">
+      <div class="cover-hero">
+        <img src="assets/cover-foam-dossier.png" alt="Open-cell and closed-cell foam samples" />
+        <div class="cover-stamp">
+          <span>Farmula formulation pack</span>
+          <span>Rev. B · Web + A4</span>
+        </div>
+        <div class="cover-title">
+          <small>Two laboratory starting formulas</small>
+          <h1>Open-Cell and Closed-Cell Foam</h1>
+        </div>
+      </div>
+      <div class="cover-body">
+        <p class="lead">This pack is the formulas. Each system is written as a 100-part B-side, with the target, the mix ratio, and the first adjustments to run in the lab.</p>
+        <table class="toc tight">
+          <tr>
+            <td class="no">01</td>
+            <td>
+              <a href="#page-oc">
+                <span class="name">Open-cell formula · OC-01 / OC-02</span>
+                <span class="desc">High-water spray-type system. Soft, air-open, 7–12 kg/m³.</span>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="no">02</td>
+            <td>
+              <a href="#page-cc">
+                <span class="name">Closed-cell formula · CC-01 / CC-02</span>
+                <span class="desc">CREAPOL rigid system. Sealed cells, 28–40 kg/m³, ~1:1 with PMDI.</span>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="no">03</td>
+            <td>
+              <a href="#page-lab">
+                <span class="name">Mix method and trial matrix</span>
+                <span class="desc">Cup procedure, index maths, and the eight first pours.</span>
+              </a>
+            </td>
+          </tr>
+        </table>
+        <img class="fig" src="assets/fig-oc-cc-comparison.png" alt="Open-cell versus closed-cell foam" style="margin-top:12px;max-height:200px;" />
+        <p class="caption">Left: open cell — windows broken, air passes, foam stays soft. Right: closed cell — membranes intact, gas trapped, foam is rigid and insulating.</p>
+      </div>
+      <div class="folio">
+        <span>Farmula · Rev. B</span>
+        <b>Formulation index</b>
+        <span>01</span>
+      </div>
+    </section>
+
+    <section class="page" id="page-oc">
+      <div class="page-inner">
+        <div class="running"><span>Farmula</span><span>Open-cell formula</span></div>
+        <h2>Open-Cell Foam · OC-01</h2>
+        <div class="rule"></div>
+        <div class="grid-2">
+          <div>
+            <img class="fig" src="assets/fig-open-cell-microstructure.png" alt="Open-cell foam microstructure" />
+            <p class="caption">Open-cell structure. High water makes CO₂. Catalysts blow faster than they gel so the windows rupture.</p>
+          </div>
+          <div class="box">
+            <h3 style="margin-top:0;">Target</h3>
+            <table class="kvs tight">
+              <tr><td>Density</td><td>7–12 kg/m³</td></tr>
+              <tr><td>Closed-cell content</td><td>&lt; 10 %</td></tr>
+              <tr><td>Cream / rise / tack-free</td><td>2–5 s / 8–15 s / 10–20 s</td></tr>
+              <tr><td>Isocyanate</td><td>PMDI, 31.0 % NCO</td></tr>
+              <tr><td>Index, lab cup</td><td>90–105</td></tr>
+              <tr><td>Index, 1:1 spray</td><td>35–55</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <h3>OC-01 · 100.0 pbw B-side</h3>
+        <p class="tiny">Midpoints of supplier System C. Amine package is 10.0 pbw: blow (PC-37 + CAT-T + BDMAEE) over gel (PC-15).</p>
+        <div class="scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Ingredient</th>
+                <th>Why it is in the formula</th>
+                <th class="num">pbw</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Sucrose / sucrose polyol</td><td>High-functionality backbone. Builds a network that can open and still stand.</td><td class="num">33.0</td></tr>
+              <tr><td>Reactive flame retardant</td><td>FR that binds into the polymer instead of only sitting in the blend.</td><td class="num">8.0</td></tr>
+              <tr><td>TEP</td><td>Cuts viscosity and adds phosphorus FR.</td><td class="num">17.0</td></tr>
+              <tr><td>Ecosurf SA-9</td><td>Emulsifies water into the polyol so blow is even.</td><td class="num">6.0</td></tr>
+              <tr><td>Silicone surfactant</td><td>Opens and evens the cells. Too little = collapse. Too much = closed windows.</td><td class="num">1.2</td></tr>
+              <tr><td>Water</td><td>Main blowing agent. Reacts with NCO to make CO₂. This is what makes the foam open and light.</td><td class="num">24.0</td></tr>
+              <tr><td>PC-37</td><td>Blow catalyst.</td><td class="num">2.4</td></tr>
+              <tr><td>CAT-T</td><td>Blow catalyst.</td><td class="num">2.4</td></tr>
+              <tr><td>PC-15</td><td>Gel / balance. Holds the rise so it does not collapse.</td><td class="num">4.2</td></tr>
+              <tr><td>BDMAEE or DEDEE</td><td>Strong open-cell blow. Helps rupture windows.</td><td class="num">1.0</td></tr>
+              <tr><td>Biocide</td><td>In-can protection of the high-water blend.</td><td class="num">0.8</td></tr>
+              <tr><td><b>B-side total</b></td><td></td><td class="num"><b>100.0</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>OC-02 · If sucrose / polyether is not available</h3>
+        <div class="scroll">
+          <table>
+            <thead>
+              <tr><th>Ingredient</th><th class="num">pbw</th><th>Ingredient</th><th class="num">pbw</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>CREAPOL PD 230</td><td class="num">40.0</td><td>CREAPOL 1500</td><td class="num">18.0</td></tr>
+              <tr><td>Emulsifier NP-9 / SA-9</td><td class="num">8.0</td><td>Silicone surfactant</td><td class="num">1.5</td></tr>
+              <tr><td>Water</td><td class="num">20.0</td><td>PC-37 + CAT-T</td><td class="num">2.0 + 1.8</td></tr>
+              <tr><td>PC-15</td><td class="num">3.5</td><td>DABCO 2040 optional</td><td class="num">0.3</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note">
+          OC-02 is a 200 g cup trial only. Polyester-only open cell is tighter and more brittle than OC-01. If cells stay closed: +1.0 water or −0.3 PC-15. Do not scale OC-02.
+        </div>
+        <div class="folio">
+          <span>Farmula · Rev. B</span>
+          <b>Open cell</b>
+          <span>02</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-cc">
+      <div class="page-inner">
+        <div class="running"><span>Farmula</span><span>Closed-cell formula</span></div>
+        <h2>Closed-Cell Foam · CC-01</h2>
+        <div class="rule"></div>
+        <div class="grid-2">
+          <div>
+            <img class="fig" src="assets/fig-closed-cell-microstructure.png" alt="Closed-cell foam microstructure" />
+            <p class="caption">Closed-cell structure. Low water, higher index, and gel-heavy catalyst keep the membranes intact.</p>
+          </div>
+          <div class="box">
+            <h3 style="margin-top:0;">Target</h3>
+            <table class="kvs tight">
+              <tr><td>Density</td><td>28–40 kg/m³</td></tr>
+              <tr><td>Closed-cell content</td><td>&gt; 90 %</td></tr>
+              <tr><td>Cream / gel / tack-free</td><td>8–15 s / 25–45 s / 40–70 s</td></tr>
+              <tr><td>Isocyanate</td><td>PMDI, 31.0 % NCO</td></tr>
+              <tr><td>Index</td><td>115–125 (calc. 120)</td></tr>
+              <tr><td>Weight ratio</td><td>≈ 100 A : 100 B</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <h3>CC-01 · 100.0 pbw B-side</h3>
+        <p class="tiny">Water is 2.0 pbw, not 15–26. That is the difference between a closed-cell rigid foam and an open-cell spray foam.</p>
+        <div class="scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Ingredient</th>
+                <th>Why it is in the formula</th>
+                <th class="num">pbw</th>
+                <th class="num">OH#</th>
+                <th class="num">eq</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>CREAPOL 326 GP</td><td>High-OH branched rigid backbone.</td><td class="num">35.5</td><td class="num">405</td><td class="num">0.2562</td></tr>
+              <tr><td>CREAPOL 1500</td><td>Linear flow. Carries pentane if you move to CC-02.</td><td class="num">24.0</td><td class="num">260</td><td class="num">0.1112</td></tr>
+              <tr><td>CREAPOL PD 230</td><td>Softer glycol polyester. Stops the blend going too brittle.</td><td class="num">7.0</td><td class="num">225</td><td class="num">0.0281</td></tr>
+              <tr><td>TCPP</td><td>Halogen FR.</td><td class="num">12.0</td><td class="num">0</td><td class="num">0</td></tr>
+              <tr><td>TEP or DEHMP</td><td>FR plus viscosity cut.</td><td class="num">6.5</td><td class="num">0</td><td class="num">0</td></tr>
+              <tr><td>Reactive FR</td><td>Bound FR. Re-index if it has OH groups.</td><td class="num">5.0</td><td class="num">0*</td><td class="num">0*</td></tr>
+              <tr><td>Emulsifier</td><td>Keeps water and FR mixed.</td><td class="num">3.5</td><td class="num">0</td><td class="num">0</td></tr>
+              <tr><td>Silicone surfactant</td><td>Fine, sealed cells. Do not use an open-cell silicone here.</td><td class="num">1.4</td><td class="num">0</td><td class="num">0</td></tr>
+              <tr><td>Water</td><td>Limited CO₂. Enough to help nucleation, not enough to open cells.</td><td class="num">2.0</td><td class="num">6233</td><td class="num">0.2222</td></tr>
+              <tr><td>PC-15</td><td>Gel / balance.</td><td class="num">1.30</td><td class="num">—</td><td class="num">—</td></tr>
+              <tr><td>DABCO 2040</td><td>Strong gel / cure.</td><td class="num">1.00</td><td class="num">—</td><td class="num">—</td></tr>
+              <tr><td>CAT-T</td><td>Small blow trim only.</td><td class="num">0.25</td><td class="num">—</td><td class="num">—</td></tr>
+              <tr><td>PC-37</td><td>Small blow trim only.</td><td class="num">0.15</td><td class="num">—</td><td class="num">—</td></tr>
+              <tr><td><b>B-side total</b></td><td></td><td class="num"><b>100.0</b></td><td></td><td class="num"><b>0.6177</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid-2" style="margin-top:12px;">
+          <div class="box navy">
+            <h3 style="margin-top:0;">Index at 120</h3>
+            <p>OH eq = 0.6177 / 100 g B</p>
+            <p>NCO eq = 0.6177 × 1.20 = 0.7412</p>
+            <p>PMDI EW 135.5 → <b>100.4 g A / 100 g B</b></p>
+            <p>Mix at <b>100 : 100</b> by weight. Confirm volume after you measure densities.</p>
+          </div>
+          <div class="box gold">
+            <h3 style="margin-top:0;">CC-02 · pentane / HFO</h3>
+            <p>Keep CC-01. Cut water to <b>1.6</b>. Add <b>10–12 pbw</b> n-/c-pentane or HFO-1233zd. If pentane will not dissolve, +4 CREAPOL 1500 and −4 CREAPOL 326 GP. Index 115–125. Hydrocarbons need rated equipment.</p>
+          </div>
+        </div>
+        <div class="folio">
+          <span>Farmula · Rev. B</span>
+          <b>Closed cell</b>
+          <span>03</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-lab">
+      <div class="page-inner">
+        <div class="running"><span>Farmula</span><span>Method and first trials</span></div>
+        <h2>Mix Method and Trial Matrix</h2>
+        <div class="rule"></div>
+        <div class="grid-2">
+          <div>
+            <img class="fig" src="assets/fig-mixing-process.png" alt="Two-component foam mixing" />
+            <p class="caption">Part B is the formula above. Part A is polymeric MDI. Bring both to temperature, then mix before cream.</p>
+          </div>
+          <div>
+            <h3 style="margin-top:0;">Cup method</h3>
+            <p>1. Condition A and B at <b>21–23 °C</b>.</p>
+            <p>2. Weigh B, then weigh A, into dry cups.</p>
+            <p>3. Pour A into B. Mix 5–6 s at 2 500–3 000 rpm for OC, 6–8 s for CC.</p>
+            <p>4. Clock cream, gel, rise and tack-free from mix start.</p>
+            <p>5. Do not touch after cream. Cut at 24 h.</p>
+            <p class="tiny">First series: 200–300 g total. No machine spray until three clean cups.</p>
+          </div>
+        </div>
+
+        <div class="box" style="margin-top:12px;">
+          <h3 style="margin-top:0;">Working equations</h3>
+          <p>EW<sub>polyol</sub> = 56 100 / OH# &nbsp;·&nbsp; eq = pbw / EW &nbsp;·&nbsp; EW<sub>water</sub> = 9.0 &nbsp;·&nbsp; EW<sub>PMDI</sub> = 4 200 / %NCO</p>
+          <p>Index = (NCO eq / OH eq) × 100 &nbsp;·&nbsp; A-side (g) = OH eq × (Index / 100) × EW<sub>PMDI</sub></p>
+        </div>
+
+        <h3>First eight pours — change one thing only</h3>
+        <div class="scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Trial</th>
+                <th>Change from control</th>
+                <th>What you are asking</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>OC-01</td><td>Control on this page</td><td>Does the midpoint rise and open?</td></tr>
+              <tr><td>OC-02</td><td>+1.0 water</td><td>Lower density / more opening</td></tr>
+              <tr><td>OC-03</td><td>PC-15 4.2 → 3.6</td><td>Less tightness / over-gel</td></tr>
+              <tr><td>OC-04</td><td>PC-37 2.4 → 3.0</td><td>Faster blow</td></tr>
+              <tr><td>CC-01</td><td>Control on this page</td><td>1:1 rigid closed-cell baseline</td></tr>
+              <tr><td>CC-02</td><td>326 GP +4 / 1500 −4</td><td>More rigidity and faster cure</td></tr>
+              <tr><td>CC-03</td><td>Water 2.0 → 1.5</td><td>Higher closed-cell content</td></tr>
+              <tr><td>CC-04</td><td>DABCO 2040 1.0 → 1.4</td><td>Demold strength</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid-3" style="margin-top:12px;">
+          <div class="box">
+            <h3 style="margin-top:0;">Record</h3>
+            <p>Temperature, mix time, cream, gel, rise, tack-free, collapse, shrink, scorch, friability.</p>
+          </div>
+          <div class="box">
+            <h3 style="margin-top:0;">Measure</h3>
+            <p>Free-rise density. Then compressive strength, 70 °C / 90 % RH stability, closed-cell content if you can.</p>
+          </div>
+          <div class="box">
+            <h3 style="margin-top:0;">Pass</h3>
+            <p>Three cups, no collapse, density in window, cream/rise pair repeats.</p>
+          </div>
+        </div>
+
+        <div class="note">
+          These are laboratory starting formulas, not a production specification or a fire certificate. Confirm silicone grade (open-cell vs closed-cell), FR grade, and the exact PMDI %NCO before you lock a plant card.
+        </div>
+        <div class="folio">
+          <span>Farmula · Rev. B</span>
+          <b>Method</b>
+          <span>04</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
