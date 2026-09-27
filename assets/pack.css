@@ -1,4 +1,4 @@
-@page { size: A4 portrait; margin: 12mm 12mm 14mm; }
+@page { size: A4 portrait; margin: 10mm; }
 
     :root {
       --navy: #0c1c30;
@@ -545,70 +545,75 @@
         background: #fff;
         font-size: 10pt;
         line-height: 1.38;
-        padding-bottom: 0;
-        overflow: visible;
-        max-width: none;
-      }
-      .util-bar, .site-header, .sheet-stack { padding: 0; }
-      .util-bar, .site-header, .site-footer, .save-pdf-sticky { display: none !important; }
-      .page {
-        width: auto;
-        max-width: none;
-        height: auto;
-        min-height: 0;
+        padding: 0;
         margin: 0;
-        box-shadow: none;
         overflow: visible;
-        break-after: page;
-        page-break-after: always;
+        max-width: none;
       }
+      .util-bar, .site-header, .sheet-stack { padding: 0; margin: 0; }
+      .util-bar,
+      .site-header,
+      .site-footer,
+      .save-pdf-sticky {
+        display: none !important;
+        position: static !important;
+        height: 0 !important;
+        overflow: hidden !important;
+      }
+      .page,
       .page.page-tall,
       .page.cover {
-        height: auto;
-        min-height: 0;
+        width: auto;
+        max-width: none;
+        height: auto !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0;
+        box-shadow: none;
         overflow: visible;
-      }
-      .sheet-stack .page:last-child {
         break-after: auto;
+        break-before: auto;
+        break-inside: auto;
         page-break-after: auto;
+        page-break-before: auto;
+        page-break-inside: auto;
+      }
+      .page + .page {
+        break-before: page;
+        page-break-before: always;
       }
       .page-inner,
       .cover-body {
-        padding: 0 0 4mm;
+        padding: 0;
         height: auto;
+        min-height: 0;
       }
-      .cover-hero { height: 72mm; }
+      .cover-hero { height: 58mm; }
       .folio {
         position: static;
         left: auto;
         right: auto;
         bottom: auto;
-        margin-top: 8mm;
-        padding-top: 3mm;
+        margin-top: 4mm;
+        padding-top: 2mm;
       }
       h2, h3 {
         break-after: avoid;
         page-break-after: avoid;
       }
-      .box, .note, .check, .fig, img {
-        break-inside: avoid;
-        page-break-inside: avoid;
-      }
-      tr {
+      tr, .note, .check {
         break-inside: avoid;
         page-break-inside: avoid;
       }
       thead { display: table-header-group; }
-      .scroll {
-        overflow: visible;
-      }
+      .scroll { overflow: visible; }
       h2 { font-size: 14.5pt; }
       h3 { font-size: 10.4pt; margin: 8px 0 4px; }
       table { font-size: 8.15pt; min-width: 0; width: 100%; }
       .scroll table { min-width: 0; }
       th { font-size: 7.1pt; padding: 3.4px 5.5px; }
       td { padding: 3.4px 5.5px; }
-      .fig { max-height: 42mm; }
+      .fig { max-height: 36mm; }
       .lead, .tiny, .caption, .note { font-size: 8.4pt; }
       .box { padding: 8px; }
       .grid-2, .grid-3 { gap: 8px; }
