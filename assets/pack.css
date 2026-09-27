@@ -491,6 +491,10 @@
       .page { width: calc(100% - 12px); margin-bottom: 12px; }
       .page-inner, .cover-body { padding: 16px 14px 20px; }
       .site-footer-inner { grid-template-columns: 1fr; width: calc(100% - 16px); }
+      .site-header {
+        position: static;
+        top: auto;
+      }
       .site-header-inner { width: calc(100% - 16px); flex-direction: column; align-items: flex-start; }
       .header-logo-img { height: 44px; }
       .wordmark { font-size: 22px; }
