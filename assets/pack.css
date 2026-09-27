@@ -297,6 +297,24 @@
 
     .tiny { font-size: 13px; color: var(--muted); }
 
+    .badge-new {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 1px 6px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--red);
+      border-radius: 2px;
+      vertical-align: middle;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+    h2 .badge-new, h3 .badge-new { margin-left: 8px; }
+    tr.is-new td:first-child { font-weight: 700; }
+
     .cover { padding: 0; overflow-x: hidden; }
     .cover-hero {
       position: relative;
