@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>BazzLab · Comparison</title>
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="assets/pack.css" />
+</head>
+<body>
+  <div class="util-bar">
+    <a href="tel:+18773072299">+1 877 307 2299</a>
+    <span>BazzLab · Formulation pack</span>
+  </div>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="index.html">
+        <img class="header-logo-img brand-logo" src="assets/bazzlab-logo.png" alt="BazzLab" />
+      </a>
+      <nav class="toolbar" aria-label="Formulation sections">
+        <a href="index.html">Index</a>
+        <a href="index.html#page-oc">Open Cell</a>
+        <a href="index.html#page-cc">Closed Cell</a>
+        <a href="comparison.html" class="current">Comparison</a>
+        <a href="index.html#page-polyols">Polyols</a>
+        <a href="index.html#page-catalysts">Catalysts</a>
+        <a href="index.html#page-lab">Lab Method</a>
+        <a href="index.html#page-patents">Notes</a>
+        <button type="button" class="ghost" onclick="window.print()">Save PDF</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="sheet-stack">
+    <section class="page page-tall" id="page-compare">
+      <div class="page-inner">
+        <div class="running"><span>BazzLab</span><span>Comparison</span></div>
+        <h2>Comparison · This Pack vs Cup-Test v4</h2>
+        <div class="rule"></div>
+        <p class="lead">BazzLab homepage formulas on the left. Client ChatGPT file <b>BAZZFOAM_Open_Closed_Cell_Cup_Test_v4.docx</b> on the right. Both are lab starting points, not plant cards.</p>
+
+        <div class="grid-2">
+          <div class="box">
+            <h3 style="margin-top:0;">This pack (BazzLab)</h3>
+            <p>Built from Flokser CREAPOL TDS, PO 1009433 (PC-15 / PC-37 / CAT-T), and the xu wang OC/CC memo. OC-01 is high-water System C. CC-01 is polyester + low water, optional HFO in CC-02.</p>
+          </div>
+          <div class="box gold">
+            <h3 style="margin-top:0;">Cup-test v4 (ChatGPT)</h3>
+            <p>R&amp;D cup plan that also uses CREAPOL 326 / 1500 / PD 230, plus KIMSPRAY 065 LDO (open) and 066 H2C (closed) as timing/density benchmarks. OC is polyether-heavy. CC already includes 10% HFO-1233zd(E).</p>
+          </div>
+        </div>
+
+        <h3>Open cell · OC-01</h3>
+        <div class="scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Point</th>
+                <th>This pack</th>
+                <th>Cup-test v4</th>
+                <th>Read</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Main polyols</td>
+                <td>Sucrose 33.0. No CREAPOL in OC-01.</td>
+                <td>Polyether 1 24.0 + polyether 2 22.0 + sucrose 15.0 + CREAPOL 1500 5.0</td>
+                <td class="gap">Different backbone</td>
+              </tr>
+              <tr>
+                <td>Water</td>
+                <td>24.0</td>
+                <td>4.5</td>
+                <td class="gap">v4 is much drier</td>
+              </tr>
+              <tr>
+                <td>Flame retardant</td>
+                <td>TEP 17.0 + reactive FR 8.0</td>
+                <td>TCPP 23.0</td>
+                <td class="gap">Different FR package</td>
+              </tr>
+              <tr>
+                <td>Amine catalysts</td>
+                <td>10.0 (PC-37 2.4, CAT-T 2.4, PC-15 4.2, BDMAEE 1.0)</td>
+                <td>3.0 split as blow 1.5 / gel 1.0 / cure 0.5 (same types: BDMAEE, CAT-T, PC-37, PC-15, DABCO 2040)</td>
+                <td class="gap">Same family, much lower dose</td>
+              </tr>
+              <tr>
+                <td>Emulsifier / opener</td>
+                <td>Ecosurf SA-9 6.0</td>
+                <td>Emulsifier / cell opener 2.0</td>
+                <td class="gap">Lower in v4</td>
+              </tr>
+              <tr>
+                <td>Silicone</td>
+                <td>1.2</td>
+                <td>1.5</td>
+                <td class="same">Close</td>
+              </tr>
+              <tr>
+                <td>Biocide</td>
+                <td>0.8</td>
+                <td>Not listed</td>
+                <td class="gap">Only in this pack</td>
+              </tr>
+              <tr>
+                <td>Target density</td>
+                <td>7–12 kg/m³</td>
+                <td>18–24 kg/m³ (KIMSPRAY 065 LDO ~22)</td>
+                <td class="gap">v4 is denser / more commercial</td>
+              </tr>
+              <tr>
+                <td>Cream / gel / rise</td>
+                <td>2–5 s / — / 8–15 s</td>
+                <td>4–6 s / 9–12 s / 16–22 s</td>
+                <td class="gap">v4 is slower, spray-like</td>
+              </tr>
+              <tr>
+                <td>Open-cell target</td>
+                <td>&lt; 10 % closed</td>
+                <td>&gt; 95 %, ideally &gt; 97 %</td>
+                <td class="same">Both want open cells</td>
+              </tr>
+              <tr>
+                <td>Index</td>
+                <td>Lab 90–105 · spray 35–55</td>
+                <td>Later series 100 / 105 / 110 after OH check</td>
+                <td class="gap">v4 assumes nearer 1:1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Closed cell · CC-01</h3>
+        <div class="scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Point</th>
+                <th>This pack</th>
+                <th>Cup-test v4</th>
+                <th>Read</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>CREAPOL 326 GP</td>
+                <td>35.5</td>
+                <td>20.0</td>
+                <td class="gap">This pack uses more 326</td>
+              </tr>
+              <tr>
+                <td>CREAPOL 1500</td>
+                <td>24.0</td>
+                <td>20.0</td>
+                <td class="same">Same role, close dose</td>
+              </tr>
+              <tr>
+                <td>CREAPOL PD 230</td>
+                <td>7.0</td>
+                <td>9.2</td>
+                <td class="same">Same modifier</td>
+              </tr>
+              <tr>
+                <td>Mannich / sucrose polyol</td>
+                <td>Not in CC-01</td>
+                <td>22.0 — main high-func. rigid polyol</td>
+                <td class="gap">v4 needs an extra polyol</td>
+              </tr>
+              <tr>
+                <td>CREAPOL total</td>
+                <td>66.5</td>
+                <td>49.2</td>
+                <td class="gap">This pack is more polyester-heavy</td>
+              </tr>
+              <tr>
+                <td>TCPP</td>
+                <td>12.0 + TEP 6.5 + reactive FR 5.0</td>
+                <td>TCPP 13.0 only</td>
+                <td class="gap">This pack has a wider FR split</td>
+              </tr>
+              <tr>
+                <td>Physical blowing agent</td>
+                <td>None in CC-01. CC-02 adds 10–12 HFO or pentane; water cut to 1.6</td>
+                <td>HFO-1233zd(E) 10.0 in the base</td>
+                <td class="gap">v4 starts as HFO hybrid</td>
+              </tr>
+              <tr>
+                <td>Water</td>
+                <td>2.0</td>
+                <td>1.1</td>
+                <td class="gap">v4 lower CO₂</td>
+              </tr>
+              <tr>
+                <td>Silicone</td>
+                <td>1.4</td>
+                <td>1.5</td>
+                <td class="same">Close</td>
+              </tr>
+              <tr>
+                <td>Catalysts</td>
+                <td>PC-15 1.30, DABCO 2040 1.00, CAT-T 0.25, PC-37 0.15</td>
+                <td>K-15 0.70, DMCHA 1.00, secondary amine 0.70, XK-614 0.50, MB-20 0.30</td>
+                <td class="gap">Different catalyst set</td>
+              </tr>
+              <tr>
+                <td>Target density</td>
+                <td>28–40 kg/m³</td>
+                <td>35–40 kg/m³ (KIMSPRAY 066 H2C ~38)</td>
+                <td class="same">Overlap at 35–40</td>
+              </tr>
+              <tr>
+                <td>Cream / gel / rise</td>
+                <td>8–15 s / 25–45 s / — · tack-free 40–70 s</td>
+                <td>4–6 s / 9–12 s / 16–22 s</td>
+                <td class="gap">v4 is faster, closer to 066 H2C</td>
+              </tr>
+              <tr>
+                <td>Index / mix</td>
+                <td>120 calc. → 100.4 g A / 100 g B</td>
+                <td>Index series 105 / 110 / 115 after OH check. Cup ~100 g A + 100 g B</td>
+                <td class="same">Both aim near 1:1 cup</td>
+              </tr>
+              <tr>
+                <td>Cost note in v4</td>
+                <td>Not priced on this page</td>
+                <td>CREAPOL $2.40/kg; TCPP ~$0.948/kg. Known items ≈ $130.40 / 100 kg B (HFO and cats not included)</td>
+                <td class="gap">Price only in v4</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>What to do in the lab</h3>
+        <div class="grid-2">
+          <div class="box">
+            <h3 style="margin-top:0;">Keep from this pack</h3>
+            <p>Use <b>CC-01</b> if the only polyols on the floor are CREAPOL 326 / 1500 / PD 230 and the PO catalysts PC-15 / PC-37 / CAT-T. Use <b>OC-01</b> only as a high-water memo screen, or OC-02 if sucrose/polyether has not arrived.</p>
+          </div>
+          <div class="box gold">
+            <h3 style="margin-top:0;">Take from cup-test v4</h3>
+            <p>If Mannich/sucrose, polyethers, HFO-1233zd, K-15 / DMCHA and a KIMSPRAY-style target are available, v4 OC (water 4.5, density 18–24) and v4 CC (HFO 10, water 1.1, density 35–40) are closer to commercial spray. Run both bases as 100 g B-side cups and keep one variable at a time.</p>
+          </div>
+        </div>
+        <div class="note">
+          Same CREAPOL grades appear in both. The big splits are open-cell water (24 vs 4.5), whether CC starts with HFO, and which catalyst family is used. Do not blend the two OC-01 formulas into one pour.
+        </div>
+        <div class="folio">
+          <span>BazzLab · Rev. C</span>
+          <b>Comparison</b>
+          <span><a href="index.html">Back to formulas</a></span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <img src="assets/bazzlab-logo.png" alt="BazzLab" class="footer-logo brand-logo" />
+      <div>
+        <strong>Horsham, PA, USA</strong>
+        <p>411 Caredean Dr, Unit A, Horsham, PA 19044</p>
+      </div>
+      <div>
+        <strong>Mississauga, ON, Canada</strong>
+        <p>1011 Haultain Ct, Unit 9, Mississauga, ON L4W 1W1</p>
+      </div>
+      <div>
+        <strong><a href="tel:+18773072299">+1 877 307 2299</a></strong>
+        <p><a href="index.html">BazzLab</a></p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
