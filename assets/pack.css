@@ -470,16 +470,22 @@
       .header-logo-img { height: 44px; }
       .wordmark { font-size: 22px; }
       .toolbar {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
         width: 100%;
+        align-items: stretch;
         justify-content: flex-start;
-        flex-wrap: nowrap;
+        overflow: visible;
+        gap: 6px;
       }
       .toolbar a, .toolbar button {
-        flex: 0 0 auto;
+        flex: 1 1 calc(50% - 6px);
         text-align: center;
-        white-space: nowrap;
+        white-space: normal;
         line-height: 1.2;
         font-size: 12px;
+        padding: 8px 10px;
         background: rgba(255, 255, 255, 0.08);
         color: #e7eee4;
         border-color: rgba(255, 255, 255, 0.14);
