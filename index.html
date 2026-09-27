@@ -328,7 +328,10 @@
     <a href="#page-cover">Index</a>
     <a href="#page-oc">Open Cell</a>
     <a href="#page-cc">Closed Cell</a>
+    <a href="#page-polyols">Polyols</a>
+    <a href="#page-catalysts">Catalysts</a>
     <a href="#page-lab">Lab Method</a>
+    <a href="#page-patents">Notes</a>
     <button type="button" class="ghost" onclick="window.print()">Save PDF</button>
   </nav>
 
@@ -339,7 +342,7 @@
         <img src="assets/cover-foam-dossier.png" alt="Open-cell and closed-cell foam samples" />
         <div class="cover-stamp">
           <span>Farmula formulation pack</span>
-          <span>Rev. B · Web + A4</span>
+          <span>Rev. C · A4 + web</span>
         </div>
         <div class="cover-title">
           <small>Two laboratory starting formulas</small>
@@ -347,7 +350,7 @@
         </div>
       </div>
       <div class="cover-body">
-        <p class="lead">This pack is the formulas. Each system is written as a 100-part B-side, with the target, the mix ratio, and the first adjustments to run in the lab.</p>
+        <p class="lead">Formulas first. Supporting TDS, catalyst, memo and patent notes are kept after the two systems so the lab can check every number.</p>
         <table class="toc tight">
           <tr>
             <td class="no">01</td>
@@ -370,9 +373,36 @@
           <tr>
             <td class="no">03</td>
             <td>
+              <a href="#page-polyols">
+                <span class="name">Polyol technical summary</span>
+                <span class="desc">CREAPOL 326 GP, 1500 and PD 230 — TDS windows and equivalent weights.</span>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="no">04</td>
+            <td>
+              <a href="#page-catalysts">
+                <span class="name">Catalysts and supplier memo ranges</span>
+                <span class="desc">PO 1009433 roles plus xu wang systems A / B / C, transcribed exactly.</span>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="no">05</td>
+            <td>
               <a href="#page-lab">
                 <span class="name">Mix method and trial matrix</span>
                 <span class="desc">Cup procedure, index maths, and the eight first pours.</span>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="no">06</td>
+            <td>
+              <a href="#page-patents">
+                <span class="name">Patent notes and sign-off</span>
+                <span class="desc">Honeywell / Arkema numbers from the client screenshots, plus use limits.</span>
               </a>
             </td>
           </tr>
@@ -381,7 +411,7 @@
         <p class="caption">Left: open cell — windows broken, air passes, foam stays soft. Right: closed cell — membranes intact, gas trapped, foam is rigid and insulating.</p>
       </div>
       <div class="folio">
-        <span>Farmula · Rev. B</span>
+        <span>Farmula · Rev. C</span>
         <b>Formulation index</b>
         <span>01</span>
       </div>
@@ -456,7 +486,7 @@
           OC-02 is a 200 g cup trial only. Polyester-only open cell is tighter and more brittle than OC-01. If cells stay closed: +1.0 water or −0.3 PC-15. Do not scale OC-02.
         </div>
         <div class="folio">
-          <span>Farmula · Rev. B</span>
+          <span>Farmula · Rev. C</span>
           <b>Open cell</b>
           <span>02</span>
         </div>
@@ -532,9 +562,164 @@
           </div>
         </div>
         <div class="folio">
-          <span>Farmula · Rev. B</span>
+          <span>Farmula · Rev. C</span>
           <b>Closed cell</b>
           <span>03</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-polyols">
+      <div class="page-inner">
+        <div class="running"><span>Farmula</span><span>Polyol technical summary</span></div>
+        <h2>Polyol Technical Summary</h2>
+        <div class="rule"></div>
+        <p class="lead">Values copied from the three Flokser TDS sheets. Mid-range OH figures are used only for the CC-01 index. Specification windows stay as published.</p>
+        <div class="scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>CREAPOL 326 GP</th>
+                <th>CREAPOL 1500</th>
+                <th>CREAPOL PD 230</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>TDS code</td><td>K.TDS.02.22.03.05.02.18</td><td>K.TDS.02.22.03.05.02.15</td><td>K.TDS.02.22.03.05.02.04</td></tr>
+              <tr><td>Chemistry</td><td>Aromatic, branched polyester polyol</td><td>Oil-based, aromatic, linear polyester polyol</td><td>Aromatic, glycol-based polyester polyol</td></tr>
+              <tr><td>Stated use</td><td>PET-based rigid foam</td><td>Rigid PUR / PIR; excellent pentane compatibility</td><td>General aromatic polyester modifier</td></tr>
+              <tr><td>Hydroxyl number</td><td>380–430 mg KOH/g</td><td>250–270 mg KOH/g</td><td>210–240 mg KOH/g</td></tr>
+              <tr><td>Mid OH used in calc.</td><td>405 mg KOH/g</td><td>260 mg KOH/g</td><td>225 mg KOH/g</td></tr>
+              <tr><td>Equivalent weight</td><td>138.5 g/eq</td><td>215.8 g/eq</td><td>249.3 g/eq</td></tr>
+              <tr><td>Viscosity @ 25 °C</td><td>3500–4500 cP</td><td>1800–2200 cP</td><td>4250–4750 cP</td></tr>
+              <tr><td>Moisture</td><td>0.1 wt % max</td><td>≤ 0.05 %w</td><td>≤ 0.05 %w</td></tr>
+              <tr><td>Acid number</td><td>2–3 mg KOH/g</td><td>≤ 1 mg KOH/g</td><td>≤ 1 mg KOH/g</td></tr>
+              <tr><td>Storage / shelf life</td><td>20–40 °C · 1 year</td><td>20–40 °C · 12 months</td><td>20–40 °C · 12 months</td></tr>
+              <tr><td>Role in the formulas</td><td>CC-01 rigid backbone</td><td>CC-01 flow / pentane carrier</td><td>CC-01 modifier · OC-02 trial</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="grid-2" style="margin-top:12px;">
+          <div>
+            <img class="fig" src="assets/fig-polyol-inventory.png" alt="Polyester polyol laboratory handling" />
+            <p class="caption">Keep drums sealed at 20–40 °C. Measure moisture before every trial series.</p>
+          </div>
+          <div>
+            <div class="box">
+              <h3 style="margin-top:0;">Equivalent-weight formula</h3>
+              <p>EW (g/eq) = 56 100 ÷ OH number (mg KOH/g)</p>
+              <p>Water EW = 9.0 g/eq (OH# 6 233)</p>
+              <p>PMDI EW @ 31.0 % NCO = 135.5 g/eq</p>
+            </div>
+            <div class="box gold" style="margin-top:10px;">
+              <h3 style="margin-top:0;">How this feeds the formulas</h3>
+              <p>326 GP is the high-OH rigid driver. 1500 lowers viscosity and carries pentane. PD 230 is the slower modifier. Together they are the CC-01 package. They are not a complete open-cell spray package — that still needs the sucrose / polyether polyols in the memo.</p>
+            </div>
+            <p class="tiny" style="margin-top:8px;">Supplier: Flokser Kimya Sanayi ve Ticaret A.Ş., Hadımköy Mah. Ürgüplü Cad. No: 7/3, 34555 Arnavutköy — İstanbul, Turkey. TDS values are not a performance guarantee.</p>
+          </div>
+        </div>
+        <div class="folio">
+          <span>Farmula · Rev. C</span>
+          <b>Polyols</b>
+          <span>04</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-catalysts">
+      <div class="page-inner">
+        <div class="running"><span>Farmula</span><span>Catalysts and memo ranges</span></div>
+        <h2>Catalysts and Supplier Ranges</h2>
+        <div class="rule"></div>
+        <p class="lead">Roles from PO 1009433. Chemical names are the industry spellings (the phone photos contain OCR typos). Quantities are listed only so the lab knows which drums are on the floor.</p>
+        <div class="scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Chemical name</th>
+                <th>Role in formula</th>
+                <th class="num">On the PO</th>
+                <th>Pack</th>
+                <th>HS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>PC-15</b></td>
+                <td>N,N,N′,N′-Tetramethyldipropylenetriamine</td>
+                <td>Gel / balance</td>
+                <td class="num">26 236 lb</td>
+                <td>1 874 lb × 14 totes</td>
+                <td>2921</td>
+              </tr>
+              <tr>
+                <td><b>PC-37</b></td>
+                <td>2-[2-(Dimethylamino)ethoxy]ethanol</td>
+                <td>Blow</td>
+                <td class="num">1 984 lb</td>
+                <td>1 984 lb × 1 tote</td>
+                <td>2922.19</td>
+              </tr>
+              <tr>
+                <td><b>CAT-T</b></td>
+                <td>Trimethyl hydroxyethyl ethylenediamine</td>
+                <td>Blow</td>
+                <td class="num">9 370 lb</td>
+                <td>1 874 lb × 5 totes</td>
+                <td>2922.1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="grid-2" style="margin-top:12px;">
+          <div class="box">
+            <h3 style="margin-top:0;">Memo rule — most open cell</h3>
+            <table class="kvs tight">
+              <tr><td>Blow</td><td>CAT-T / BDMAEE / PC-37 / DEDEE</td></tr>
+              <tr><td>Gel / balance</td><td>PC-15</td></tr>
+              <tr><td>Strong gel / cure</td><td>DABCO 2040</td></tr>
+              <tr><td>Combined OC cat package</td><td>USD 5.15 / kg CIF Turkey port</td></tr>
+            </table>
+          </div>
+          <div class="box gold">
+            <h3 style="margin-top:0;">Still required for the formulas</h3>
+            <p>Polymeric MDI (≈ 31 % NCO), silicone surfactant, emulsifier (NP-9 or Ecosurf SA-9), flame retardant (TCPP / TEP / DEHMP / reactive FR), biocide, and — for OC-01 — sucrose / polyether polyols. For CC-02, pentane or HFO-1233zd is optional but preferred.</p>
+          </div>
+        </div>
+        <h3>Supplier memo — OC/CC ingredient windows (pbw)</h3>
+        <p class="tiny">From Memo Style.pdf, 31 August 2026, xu wang to george@bazzfoam.com. These are ranges, not a finished 100-part formula. High water (15–26) marks A / B / C as open-cell type. Closed-cell water is 2.0 in CC-01.</p>
+        <div class="scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Ingredient</th>
+                <th class="mid">A</th>
+                <th class="mid">B</th>
+                <th class="mid">C</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Sucrose / sucrose polyol</td><td class="mid">20–60</td><td class="mid">—</td><td class="mid">30–36</td></tr>
+              <tr><td>Polyether polyol 1</td><td class="mid">—</td><td class="mid">15–19</td><td class="mid">—</td></tr>
+              <tr><td>Polyether polyol 2</td><td class="mid">—</td><td class="mid">14–18</td><td class="mid">—</td></tr>
+              <tr><td>Reactive FR</td><td class="mid">—</td><td class="mid">—</td><td class="mid">6–10</td></tr>
+              <tr><td>DEHMP / organophosphate</td><td class="mid">—</td><td class="mid">13–17</td><td class="mid">—</td></tr>
+              <tr><td>TEP</td><td class="mid">—</td><td class="mid">—</td><td class="mid">15–19</td></tr>
+              <tr><td>TCPP</td><td class="mid">15–25</td><td class="mid">—</td><td class="mid">—</td></tr>
+              <tr><td>Amine catalysts</td><td class="mid">4–10</td><td class="mid">8–12</td><td class="mid">8–12</td></tr>
+              <tr><td>Emulsifier</td><td class="mid">5–15</td><td class="mid">8–12 NP-9</td><td class="mid">4–8 Ecosurf SA-9</td></tr>
+              <tr><td>Silicone surfactant</td><td class="mid">0.5–2</td><td class="mid">0.5–2</td><td class="mid">0.5–2</td></tr>
+              <tr><td>Water</td><td class="mid">15–25</td><td class="mid">18–21</td><td class="mid">22–26</td></tr>
+              <tr><td>Biocide</td><td class="mid">—</td><td class="mid">—</td><td class="mid">0.5–1</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="folio">
+          <span>Farmula · Rev. C</span>
+          <b>Catalysts</b>
+          <span>05</span>
         </div>
       </div>
     </section>
@@ -608,9 +793,87 @@
           These are laboratory starting formulas, not a production specification or a fire certificate. Confirm silicone grade (open-cell vs closed-cell), FR grade, and the exact PMDI %NCO before you lock a plant card.
         </div>
         <div class="folio">
-          <span>Farmula · Rev. B</span>
+          <span>Farmula · Rev. C</span>
           <b>Method</b>
-          <span>04</span>
+          <span>06</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-patents">
+      <div class="page-inner">
+        <div class="running"><span>Farmula</span><span>Notes and sign-off</span></div>
+        <h2>Patent Notes and Sign-off</h2>
+        <div class="rule"></div>
+        <p class="lead">Numbers read from the client screenshots. Listed as blowing-agent / foam technology context, not freedom-to-operate advice.</p>
+        <div class="scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Applicant (as shown)</th>
+                <th>Publication / patent</th>
+                <th>Date on second screenshot</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Honeywell</td><td>US7655610 / US7655610B2</td><td>2024.10</td></tr>
+              <tr><td>Honeywell</td><td>US8618040 / US8618040B2</td><td>2023.11</td></tr>
+              <tr><td>Honeywell</td><td>US8962707 / US8962707B2</td><td>2023.10</td></tr>
+              <tr><td>Honeywell</td><td>US9884946</td><td>2025.4.6</td></tr>
+              <tr><td>Honeywell</td><td>US8053404B2</td><td>2024.4</td></tr>
+              <tr><td>Honeywell</td><td>US8623808B2</td><td>2024.4</td></tr>
+              <tr><td>Arkema</td><td>CN105001440A</td><td>—</td></tr>
+              <tr><td>Honeywell</td><td>EP2640800A2 · EP2737006A2 · EP2606086A2 · EP3567072A1</td><td>—</td></tr>
+              <tr><td>Honeywell</td><td>JP5504161B2 · JP6231496B2</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="grid-2" style="margin-top:12px;">
+          <div class="box">
+            <h3 style="margin-top:0;">Source files used</h3>
+            <p>CREAPOL 326 TDS · CREAPOL 1500 TDS · CREAPOL PD 230 TDS · Memo Style.pdf (xu wang, 31 Aug 2026) · PO 1009433 catalyst photos · Honeywell / Arkema patent screenshots.</p>
+          </div>
+          <div class="box gold">
+            <h3 style="margin-top:0;">What this pack is not</h3>
+            <p>Not a production specification, fire-test certificate, spray-machine card, or legal clearance. Write the exact silicone, FR and PMDI grades on the trial sheet when the drums are opened.</p>
+          </div>
+        </div>
+        <h3>Next actions</h3>
+        <div class="scroll">
+          <table>
+            <thead>
+              <tr><th>Step</th><th>Action</th><th>Owner</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>Confirm sucrose / polyether, silicone, FR and PMDI grades.</td><td>Purchasing</td></tr>
+              <tr><td>2</td><td>Run OC-01 and CC-01 as 200–300 g cups at 22 °C.</td><td>Lab</td></tr>
+              <tr><td>3</td><td>Change only one variable per trial.</td><td>Lab</td></tr>
+              <tr><td>4</td><td>Move to CC-02 only with rated equipment if pentane / HFO is intended.</td><td>Plant / HSE</td></tr>
+              <tr><td>5</td><td>Return cream / rise / density numbers for the next revision.</td><td>Technical</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Issue and sign-off</h3>
+        <div class="scroll">
+          <table>
+            <thead>
+              <tr><th>Role</th><th>Name</th><th>Signature</th><th>Date</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Prepared</td><td>Technical — Farmula pack Rev. C</td><td></td><td>28 Sep 2026</td></tr>
+              <tr><td>Issued to</td><td>Bazzfoam</td><td></td><td></td></tr>
+              <tr><td>Lab acceptance</td><td>First cup series OC-01 + CC-01 complete</td><td></td><td></td></tr>
+              <tr><td>Next revision</td><td>After cream / rise / density return</td><td></td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note">
+          Prepared from the supplied TDS files, PO photographs and the xu wang memo. Flokser, Honeywell, Arkema, DABCO and CREAPOL names are the property of their owners. Commercial use needs controlled lab validation.
+        </div>
+        <div class="folio">
+          <span>Farmula · Rev. C</span>
+          <b>Notes</b>
+          <span>07</span>
         </div>
       </div>
     </section>
