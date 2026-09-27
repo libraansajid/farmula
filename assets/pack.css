@@ -341,9 +341,11 @@
       width: 100%;
       max-width: 100%;
       height: auto;
-      max-height: 240px;
-      object-fit: cover;
+      max-height: 380px;
+      object-fit: contain;
+      object-position: center;
       display: block;
+      background: #eef2f0;
       border: 0.6px solid var(--line);
     }
 
@@ -399,10 +401,11 @@
     .cover-hero {
       position: relative;
       width: 100%;
-      height: clamp(220px, 48vw, 380px);
+      height: clamp(260px, 42vw, 420px);
       overflow: hidden;
       background: #08182b;
     }
+    .cover-compare { margin-top: 12px; }
     .cover-hero img {
       position: absolute;
       inset: 0;
@@ -484,7 +487,7 @@
     @media (max-width: 820px) {
       .grid-2, .grid-3 { grid-template-columns: 1fr; }
       .cover-stamp { flex-direction: column; }
-      .fig { max-height: 200px; }
+      .fig { max-height: 280px; object-fit: contain; }
     }
 
     @media (max-width: 560px) {
@@ -533,7 +536,7 @@
         font-size: 15px;
         box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.35);
       }
-      .cover-hero { height: 220px; }
+      .cover-hero { height: 240px; }
       .cover-stamp { letter-spacing: .04em; font-size: 10px; }
       .running { letter-spacing: .04em; gap: 6px; }
       .running span { overflow-wrap: anywhere; }
@@ -599,10 +602,13 @@
         background: #08182b;
       }
       .cover-hero img {
-        position: static;
-        height: 36mm;
-        width: 100%;
-        object-fit: cover;
+        position: static !important;
+        inset: auto;
+        width: 100% !important;
+        height: auto !important;
+        max-height: 58mm;
+        object-fit: contain;
+        object-position: center;
       }
       .cover-hero::after,
       .cover-stamp,
@@ -628,7 +634,11 @@
       }
       .cover .fig,
       .cover .caption {
-        display: none !important;
+        display: block;
+        margin-top: 3mm;
+      }
+      .cover .fig.cover-compare {
+        max-height: 48mm;
       }
       .toc-list .desc { display: none; }
       .toc-list a { padding: 4px 0; }
@@ -667,7 +677,14 @@
       .scroll table { min-width: 0; }
       th { font-size: 6.8pt; padding: 2.8px 4.5px; }
       td { padding: 2.8px 4.5px; }
-      .fig { max-height: 26mm; }
+      .fig {
+        max-height: 58mm;
+        height: auto;
+        object-fit: contain;
+        object-position: center;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
       .lead, .tiny, .caption, .note { font-size: 8pt; }
       .note { margin-top: 6px; }
       .box { padding: 6px 8px; }
