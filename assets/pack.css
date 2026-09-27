@@ -603,7 +603,10 @@
         width: 100% !important;
         height: auto !important;
         object-fit: contain;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
       }
+      .running,
       .print-cover-head { display: none !important; }
       .print-cover-head p {
         margin: 0 0 2px;

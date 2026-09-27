@@ -26,18 +26,55 @@ const jobs = [
 
 async function renderFile(browser, htmlName, outRel) {
   const page = await browser.newPage();
-  await page.setViewport({ width: 980, height: 1400, deviceScaleFactor: 2 });
+  await page.setViewport({ width: 980, height: 1600, deviceScaleFactor: 1 });
+  await page.emulateMediaType("screen");
   await page.goto(pathToFileURL(path.join(root, htmlName)).href, {
     waitUntil: "networkidle0",
     timeout: 120000
   });
-  await page.evaluate(() => document.fonts.ready);
+  await page.evaluate(() => document.fonts && document.fonts.ready);
+  await page.evaluate(async () => {
+    await Promise.all(
+      Array.from(document.images).map((img) => {
+        if (img.complete && img.naturalWidth) return Promise.resolve();
+        return new Promise((done) => {
+          img.addEventListener("load", done, { once: true });
+          img.addEventListener("error", done, { once: true });
+        });
+      })
+    );
+  });
+
+  await page.evaluate(() => {
+    document.querySelectorAll(
+      ".util-bar, .site-header, .site-footer, .save-pdf-sticky, .running, .print-cover-head"
+    ).forEach((el) => el.remove());
+  });
+
   await page.addStyleTag({
     content: `
-      .util-bar, .site-header, .site-footer, .save-pdf-sticky { display: none !important; }
       html, body { background: #fff !important; padding: 0 !important; margin: 0 !important; }
       .sheet-stack { padding: 0 !important; }
-      .page { width: 210mm !important; max-width: 210mm !important; margin: 0 auto !important; box-shadow: none !important; }
+      .page {
+        width: 210mm !important;
+        max-width: 210mm !important;
+        margin: 0 auto !important;
+        box-shadow: none !important;
+      }
+      .cover-hero { background: #08182b !important; height: auto !important; }
+      .cover-hero img {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      img, .fig {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        visibility: visible !important;
+      }
     `
   });
 
@@ -59,13 +96,13 @@ async function renderFile(browser, htmlName, outRel) {
       return shown ? shown.scrollHeight : 800;
     }, id);
 
-    const heightMm = Math.ceil((heightPx * 25.4) / 96 + 18);
+    const heightMm = Math.ceil((heightPx * 25.4) / 96 + 10);
     const buf = await page.pdf({
       printBackground: true,
       preferCSSPageSize: false,
       width: "210mm",
       height: heightMm + "mm",
-      margin: { top: "6mm", right: "6mm", bottom: "6mm", left: "6mm" },
+      margin: { top: "4mm", right: "6mm", bottom: "4mm", left: "6mm" },
       pageRanges: "1"
     });
     const part = await PDFDocument.load(buf);
