@@ -473,3 +473,20 @@
     }
 
     .toolbar a.current { color: var(--green-dark); }
+
+    .check {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin: 5px 0;
+      font-size: 14px;
+      line-height: 1.35;
+    }
+    .check input {
+      margin-top: 2px;
+      width: 15px;
+      height: 15px;
+      accent-color: var(--green);
+      flex: 0 0 15px;
+    }
+    .weigh-actual { min-width: 72px; background: #fffef6 !important; }
