@@ -13,3 +13,4 @@ assets/bazz.css
 assets/bazz-logo-try.png
 .DS_Store
 Thumbs.db
+node_modules/

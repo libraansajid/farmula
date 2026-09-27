@@ -1,0 +1,11 @@
+{
+  "name": "farmula",
+  "private": true,
+  "scripts": {
+    "build-pdfs": "node scripts/build-pdfs.mjs"
+  },
+  "devDependencies": {
+    "pdf-lib": "^1.17.1",
+    "puppeteer-core": "^25.12.0"
+  }
+}

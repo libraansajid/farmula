@@ -400,19 +400,17 @@
     .cover-hero {
       position: relative;
       width: 100%;
-      height: clamp(260px, 42vw, 420px);
+      height: auto;
       overflow: hidden;
       background: #08182b;
     }
     .cover-compare { margin-top: 12px; }
     .cover-hero img {
-      position: absolute;
-      inset: 0;
+      position: static;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 42%;
+      height: auto;
       display: block;
+      object-fit: contain;
     }
     .cover-hero::after {
       content: "";
@@ -535,7 +533,7 @@
         font-size: 15px;
         box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.35);
       }
-      .cover-hero { height: 240px; }
+      .cover-hero { height: auto; }
       .cover-stamp { letter-spacing: .04em; font-size: 10px; }
       .running { letter-spacing: .04em; gap: 6px; }
       .running span { overflow-wrap: anywhere; }
@@ -583,10 +581,7 @@
         page-break-before: auto;
         page-break-inside: auto;
       }
-      .page + .page {
-        break-before: page;
-        page-break-before: always;
-      }
+      .page { break-inside: avoid; page-break-inside: avoid; }
       .page-inner {
         padding: 22px 20px 28px;
         height: auto;
@@ -599,27 +594,17 @@
       }
       .cover-hero {
         height: auto;
-        overflow: visible;
-        break-inside: avoid;
-        page-break-inside: avoid;
+        overflow: hidden;
         background: #08182b;
       }
       .cover-hero img {
         position: static !important;
         inset: auto;
         width: 100% !important;
-        height: 62mm !important;
-        max-height: none;
-        object-fit: cover;
-        object-position: center;
+        height: auto !important;
+        object-fit: contain;
       }
-      .cover-hero::after,
-      .cover-stamp,
-      .cover-title { display: none !important; }
-      .print-cover-head {
-        display: block;
-        margin: 0 0 4mm;
-      }
+      .print-cover-head { display: none !important; }
       .print-cover-head p {
         margin: 0 0 2px;
         letter-spacing: .12em;
