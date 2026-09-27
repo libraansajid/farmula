@@ -159,6 +159,28 @@
 
     .toolbar .ghost:hover { background: var(--green-dark); border-color: var(--green-dark); color: #fff; }
 
+    .save-pdf-sticky {
+      position: fixed;
+      right: 16px;
+      bottom: calc(16px + env(safe-area-inset-bottom));
+      z-index: 40;
+      appearance: none;
+      border: 1px solid var(--green);
+      background: var(--green);
+      color: #fff;
+      font-weight: 700;
+      font-family: inherit;
+      font-size: 14px;
+      padding: 12px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+    }
+    .save-pdf-sticky:hover {
+      background: var(--green-dark);
+      border-color: var(--green-dark);
+    }
+
     .sheet-stack { padding: 16px 0 24px; }
 
     .site-footer {
@@ -502,7 +524,7 @@
     @media print {
       html, body { background: #fff; font-size: 10.2pt; line-height: 1.38; }
       .util-bar, .site-header, .sheet-stack { padding: 0; }
-      .util-bar, .site-header, .site-footer { display: none !important; }
+      .util-bar, .site-header, .site-footer, .save-pdf-sticky { display: none !important; }
       .page {
         width: 210mm;
         height: 297mm;
