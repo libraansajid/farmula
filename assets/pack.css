@@ -297,7 +297,7 @@
 
     .tiny { font-size: 13px; color: var(--muted); }
 
-    .badge-new {
+    .badge-new, .badge-best {
       display: inline-block;
       margin-left: 6px;
       padding: 1px 6px;
@@ -312,8 +312,11 @@
       line-height: 1.4;
       white-space: nowrap;
     }
-    h2 .badge-new, h3 .badge-new { margin-left: 8px; }
+    .badge-best { background: var(--green); }
+    h2 .badge-new, h3 .badge-new, h2 .badge-best, h3 .badge-best { margin-left: 8px; }
     tr.is-new td:first-child { font-weight: 700; }
+    .toolbar a.best-nav { color: var(--green-dark); }
+    .box.best { background: #eef8f1; border: 2px solid var(--green); }
 
     .cover { padding: 0; overflow-x: hidden; }
     .cover-hero {
