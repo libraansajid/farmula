@@ -7,6 +7,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="assets/favicon.png" type="image/png" />
   <link rel="stylesheet" href="assets/pack.css" />
+  <script src="assets/pack.js" defer></script>
 </head>
 <body>
   <div class="util-bar">
@@ -31,11 +32,11 @@
         <a href="#page-catalysts">Catalysts</a>
         <a href="#page-lab">Lab Method</a>
         <a href="#page-patents">Notes</a>
-        <button type="button" class="ghost" onclick="window.print()">Save PDF</button>
+        <button type="button" class="ghost" onclick="savePackPdf()">Save PDF</button>
       </nav>
     </div>
   </header>
-  <button type="button" class="save-pdf-sticky" onclick="window.print()">Save PDF</button>
+  <button type="button" class="save-pdf-sticky" onclick="savePackPdf()">Save PDF</button>
 
   <div class="sheet-stack">
 
@@ -51,6 +52,10 @@
         </div>
       </div>
       <div class="cover-body">
+        <div class="print-cover-head">
+          <p>Rev. J · Formulation pack</p>
+          <h1>Open-Cell and Closed-Cell Foam</h1>
+        </div>
         <p class="lead">Formulas first. <b>BX-01</b> is the BazzLab card — the mix others do not publish. OC-01 and CC-01 stay as lab screens. TDS, catalyst, memo and patent notes follow so every number can be checked.</p>
         <ol class="toc-list">
           <li>
