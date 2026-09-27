@@ -4,5 +4,8 @@ Memo Style.pdf
 *.zip
 _zip_extract/
 assets/preview/
+assets/bazz-home.html
+assets/bazz.css
+assets/bazz-logo-try.png
 .DS_Store
 Thumbs.db

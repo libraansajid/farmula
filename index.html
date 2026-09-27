@@ -3,23 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Farmula · Open-Cell &amp; Closed-Cell Foam Formulas</title>
+  <title>Bazz Foam · Open-Cell &amp; Closed-Cell Foam Formulas</title>
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
   <style>
     @page { size: A4 portrait; margin: 0; }
 
     :root {
-      --navy: #0e2a47;
-      --ink: #1a1d21;
-      --muted: #5b6570;
-      --line: #c9d0d6;
-      --gold: #b0893e;
-      --gold-soft: #e8d7b0;
+      --navy: #0c1c30;
+      --navy-2: #1e3b60;
+      --ink: #212529;
+      --muted: #5c6770;
+      --line: #d5dde3;
+      --red: #e30613;
+      --green: #36ad5b;
+      --green-dark: #2d8f4f;
+      --gold: #36ad5b;
+      --gold-soft: #d8f0e0;
       --paper: #ffffff;
-      --soft: #eef2f6;
+      --soft: #f3f7f4;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    img { max-width: 100%; }
+    img { max-width: 100%; height: auto; }
+    .brand-logo {
+      max-width: none;
+      width: auto;
+      object-fit: contain;
+    }
 
     html {
       scroll-behavior: smooth;
@@ -28,9 +38,9 @@
     }
 
     body {
-      background: #5d6570;
+      background: #e7edf2;
       color: var(--ink);
-      font-family: "Segoe UI", Calibri, Arial, sans-serif;
+      font-family: Arial, Helvetica, "Segoe UI", sans-serif;
       font-size: 16px;
       line-height: 1.45;
       overflow-x: hidden;
@@ -39,40 +49,112 @@
       print-color-adjust: exact;
     }
 
-    .toolbar {
+    .util-bar {
+      background: var(--navy);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 8px 18px;
+      padding-top: calc(8px + env(safe-area-inset-top));
+    }
+
+    .util-bar a { color: #fff; text-decoration: none; }
+
+    .site-header {
       position: sticky;
       top: 0;
       z-index: 20;
+      background: #fff;
+      border-bottom: 3px solid var(--green);
+      box-shadow: 0 4px 16px rgba(12, 28, 48, .08);
+    }
+
+    .site-header-inner {
+      width: min(210mm, calc(100% - 20px));
+      max-width: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 0;
+    }
+
+    .header-logo-img {
+      height: 56px;
+      width: auto;
+      max-width: 220px;
+      display: block;
+      object-fit: contain;
+    }
+
+    .toolbar {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-      padding: 10px 12px;
-      padding-top: calc(10px + env(safe-area-inset-top));
-      background: #0e2a47;
+      justify-content: flex-end;
+      gap: 6px;
+      background: transparent;
+      padding: 0;
     }
 
     .toolbar a, .toolbar button {
       appearance: none;
       border: 0;
-      background: #b0893e;
-      color: #fff;
+      background: transparent;
+      color: var(--navy);
       font-weight: 700;
       font-family: inherit;
       font-size: 13px;
-      padding: 8px 12px;
-      border-radius: 3px;
+      padding: 8px 10px;
+      border-radius: 2px;
       cursor: pointer;
       text-decoration: none;
       white-space: nowrap;
     }
 
+    .toolbar a:hover, .toolbar button:hover { color: var(--green-dark); }
+
     .toolbar .ghost {
-      background: transparent;
-      border: 1px solid rgba(255,255,255,.35);
+      background: var(--green);
+      color: #fff;
     }
 
-    .sheet-stack { padding: 16px 0 40px; }
+    .toolbar .ghost:hover { background: var(--green-dark); color: #fff; }
+
+    .sheet-stack { padding: 16px 0 24px; }
+
+    .site-footer {
+      background: var(--navy);
+      color: #d5dde6;
+      padding: 28px 16px 36px;
+    }
+
+    .site-footer-inner {
+      width: min(210mm, calc(100% - 20px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: auto 1fr 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .footer-logo {
+      height: 52px;
+      width: auto;
+      max-width: 180px;
+      background: #fff;
+      padding: 6px 8px;
+      border-radius: 2px;
+      object-fit: contain;
+    }
+
+    .site-footer strong { color: #fff; display: block; margin-bottom: 4px; }
+    .site-footer p { margin: 0; font-size: 13px; }
+    .site-footer a { color: #b7e7c6; text-decoration: none; }
 
     .page {
       width: min(210mm, calc(100% - 20px));
@@ -182,7 +264,7 @@
       background: var(--soft);
     }
 
-    .box.gold { background: #fbf6ea; border-color: var(--gold-soft); }
+    .box.gold { background: #eef8f1; border-color: var(--gold-soft); }
     .box.navy { background: var(--navy); color: #e8eef4; }
     .box.navy h3, .box.navy b { color: #fff; }
     .box.navy p { color: #d5dde6; }
@@ -212,8 +294,8 @@
     .note {
       font-size: 14px;
       color: #3d4650;
-      background: #fbf6ea;
-      border-left: 3px solid var(--gold);
+      background: #eef8f1;
+      border-left: 3px solid var(--green);
       padding: 10px 12px;
       margin-top: 12px;
     }
@@ -251,12 +333,26 @@
       z-index: 2;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       gap: 8px;
-      color: #f3e6c4;
+      color: #fff;
       font-size: 11px;
-      letter-spacing: .12em;
+      letter-spacing: .08em;
       text-transform: uppercase;
       font-weight: 700;
+    }
+    .cover-logo-wrap {
+      flex: 0 0 auto;
+      background: #fff;
+      padding: 6px 10px;
+      border-radius: 2px;
+    }
+    .cover-logo-wrap img {
+      display: block;
+      height: 40px;
+      width: auto;
+      max-width: 150px;
+      object-fit: contain;
     }
     .cover-title {
       position: absolute;
@@ -270,7 +366,7 @@
       display: block;
       letter-spacing: .16em;
       text-transform: uppercase;
-      color: var(--gold-soft);
+      color: #b7e7c6;
       font-size: 12px;
       font-weight: 700;
       margin-bottom: 6px;
@@ -296,10 +392,10 @@
     }
     .toc-list a > :last-child { min-width: 0; max-width: 100%; }
     .toc-list .no {
-      font-family: Georgia, serif;
-      font-size: 1.25rem;
-      color: var(--gold);
-      font-weight: 700;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.15rem;
+      color: var(--red);
+      font-weight: 800;
     }
     .toc-list .name { display: block; font-size: 1.05rem; font-weight: 700; color: var(--navy); overflow-wrap: break-word; }
     .toc-list .desc { display: block; font-size: 13px; color: var(--muted); font-weight: 400; margin-top: 2px; overflow-wrap: break-word; }
@@ -314,16 +410,22 @@
       body { font-size: 15px; }
       .page { width: calc(100% - 12px); margin-bottom: 12px; }
       .page-inner, .cover-body { padding: 16px 14px 20px; }
-      .toolbar { justify-content: flex-start; }
+      .site-footer-inner { grid-template-columns: 1fr; width: calc(100% - 16px); }
+      .site-header-inner { width: calc(100% - 16px); flex-direction: column; align-items: flex-start; }
+      .header-logo-img { height: 44px; }
+      .toolbar { justify-content: flex-start; width: 100%; }
       .toolbar a, .toolbar button {
         flex: 1 1 calc(50% - 8px);
         text-align: center;
         white-space: normal;
         line-height: 1.2;
         font-size: 12px;
+        background: var(--soft);
       }
+      .toolbar .ghost { background: var(--green); }
       .cover-hero { height: 220px; }
-      .cover-stamp { letter-spacing: .06em; font-size: 10px; }
+      .cover-stamp { letter-spacing: .04em; font-size: 10px; }
+      .cover-logo-wrap img { height: 32px; max-width: 120px; }
       .running { letter-spacing: .04em; gap: 6px; }
       .running span { overflow-wrap: anywhere; }
       th, td { padding: 8px 6px; }
@@ -332,8 +434,8 @@
 
     @media print {
       html, body { background: #fff; font-size: 10.2pt; line-height: 1.38; }
-      .toolbar, .sheet-stack { padding: 0; }
-      .toolbar { display: none !important; }
+      .util-bar, .site-header, .sheet-stack { padding: 0; }
+      .util-bar, .site-header, .site-footer { display: none !important; }
       .page {
         width: 210mm;
         height: 297mm;
@@ -365,16 +467,27 @@
   </style>
 </head>
 <body>
-  <nav class="toolbar" aria-label="Formulation sections">
-    <a href="#page-cover">Index</a>
-    <a href="#page-oc">Open Cell</a>
-    <a href="#page-cc">Closed Cell</a>
-    <a href="#page-polyols">Polyols</a>
-    <a href="#page-catalysts">Catalysts</a>
-    <a href="#page-lab">Lab Method</a>
-    <a href="#page-patents">Notes</a>
-    <button type="button" class="ghost" onclick="window.print()">Save PDF</button>
-  </nav>
+  <div class="util-bar">
+    <a href="tel:+18773072299">+1 877 307 2299</a>
+    <span>Bazz Foam Spray · Formulation pack</span>
+  </div>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="https://bazzfoam.com/us/en" target="_blank" rel="noopener">
+        <img class="header-logo-img brand-logo" src="assets/bazz-logo.png" alt="Bazz Foam Spray" />
+      </a>
+      <nav class="toolbar" aria-label="Formulation sections">
+        <a href="#page-cover">Index</a>
+        <a href="#page-oc">Open Cell</a>
+        <a href="#page-cc">Closed Cell</a>
+        <a href="#page-polyols">Polyols</a>
+        <a href="#page-catalysts">Catalysts</a>
+        <a href="#page-lab">Lab Method</a>
+        <a href="#page-patents">Notes</a>
+        <button type="button" class="ghost" onclick="window.print()">Save PDF</button>
+      </nav>
+    </div>
+  </header>
 
   <div class="sheet-stack">
 
@@ -382,11 +495,13 @@
       <div class="cover-hero">
         <img src="assets/cover-foam-dossier.png" alt="Open-cell and closed-cell foam samples" />
         <div class="cover-stamp">
-          <span>Farmula formulation pack</span>
-          <span>Rev. C · A4 + web</span>
+          <div class="cover-logo-wrap">
+            <img src="assets/bazz-logo.png" alt="Bazz Foam Spray" />
+          </div>
+          <span>Rev. C · Formulation pack</span>
         </div>
         <div class="cover-title">
-          <small>Two laboratory starting formulas</small>
+          <small>Open-cell · Closed-cell · Laboratory starting formulas</small>
           <h1>Open-Cell and Closed-Cell Foam</h1>
         </div>
       </div>
@@ -452,7 +567,7 @@
         <p class="caption">Left: open cell — windows broken, air passes, foam stays soft. Right: closed cell — membranes intact, gas trapped, foam is rigid and insulating.</p>
       </div>
       <div class="folio">
-        <span>Farmula · Rev. C</span>
+        <span>Bazz Foam · Rev. C</span>
         <b>Formulation index</b>
         <span>01</span>
       </div>
@@ -460,7 +575,7 @@
 
     <section class="page" id="page-oc">
       <div class="page-inner">
-        <div class="running"><span>Farmula</span><span>Open-cell formula</span></div>
+        <div class="running"><span>Bazz Foam</span><span>Open-cell formula</span></div>
         <h2>Open-Cell Foam · OC-01</h2>
         <div class="rule"></div>
         <div class="grid-2">
@@ -527,7 +642,7 @@
           OC-02 is a 200 g cup trial only. Polyester-only open cell is tighter and more brittle than OC-01. If cells stay closed: +1.0 water or −0.3 PC-15. Do not scale OC-02.
         </div>
         <div class="folio">
-          <span>Farmula · Rev. C</span>
+          <span>Bazz Foam · Rev. C</span>
           <b>Open cell</b>
           <span>02</span>
         </div>
@@ -536,7 +651,7 @@
 
     <section class="page" id="page-cc">
       <div class="page-inner">
-        <div class="running"><span>Farmula</span><span>Closed-cell formula</span></div>
+        <div class="running"><span>Bazz Foam</span><span>Closed-cell formula</span></div>
         <h2>Closed-Cell Foam · CC-01</h2>
         <div class="rule"></div>
         <div class="grid-2">
@@ -603,7 +718,7 @@
           </div>
         </div>
         <div class="folio">
-          <span>Farmula · Rev. C</span>
+          <span>Bazz Foam · Rev. C</span>
           <b>Closed cell</b>
           <span>03</span>
         </div>
@@ -612,7 +727,7 @@
 
     <section class="page" id="page-polyols">
       <div class="page-inner">
-        <div class="running"><span>Farmula</span><span>Polyol technical summary</span></div>
+        <div class="running"><span>Bazz Foam</span><span>Polyol technical summary</span></div>
         <h2>Polyol Technical Summary</h2>
         <div class="rule"></div>
         <p class="lead">Values copied from the three Flokser TDS sheets. Mid-range OH figures are used only for the CC-01 index. Specification windows stay as published.</p>
@@ -661,7 +776,7 @@
           </div>
         </div>
         <div class="folio">
-          <span>Farmula · Rev. C</span>
+          <span>Bazz Foam · Rev. C</span>
           <b>Polyols</b>
           <span>04</span>
         </div>
@@ -670,7 +785,7 @@
 
     <section class="page" id="page-catalysts">
       <div class="page-inner">
-        <div class="running"><span>Farmula</span><span>Catalysts and memo ranges</span></div>
+        <div class="running"><span>Bazz Foam</span><span>Catalysts and memo ranges</span></div>
         <h2>Catalysts and Supplier Ranges</h2>
         <div class="rule"></div>
         <p class="lead">Roles from PO 1009433. Chemical names are the industry spellings (the phone photos contain OCR typos). Quantities are listed only so the lab knows which drums are on the floor.</p>
@@ -758,7 +873,7 @@
           </table>
         </div>
         <div class="folio">
-          <span>Farmula · Rev. C</span>
+          <span>Bazz Foam · Rev. C</span>
           <b>Catalysts</b>
           <span>05</span>
         </div>
@@ -767,7 +882,7 @@
 
     <section class="page" id="page-lab">
       <div class="page-inner">
-        <div class="running"><span>Farmula</span><span>Method and first trials</span></div>
+        <div class="running"><span>Bazz Foam</span><span>Method and first trials</span></div>
         <h2>Mix Method and Trial Matrix</h2>
         <div class="rule"></div>
         <div class="grid-2">
@@ -834,7 +949,7 @@
           These are laboratory starting formulas, not a production specification or a fire certificate. Confirm silicone grade (open-cell vs closed-cell), FR grade, and the exact PMDI %NCO before you lock a plant card.
         </div>
         <div class="folio">
-          <span>Farmula · Rev. C</span>
+          <span>Bazz Foam · Rev. C</span>
           <b>Method</b>
           <span>06</span>
         </div>
@@ -843,7 +958,7 @@
 
     <section class="page" id="page-patents">
       <div class="page-inner">
-        <div class="running"><span>Farmula</span><span>Notes and sign-off</span></div>
+        <div class="running"><span>Bazz Foam</span><span>Notes and sign-off</span></div>
         <h2>Patent Notes and Sign-off</h2>
         <div class="rule"></div>
         <p class="lead">Numbers read from the client screenshots. Listed as blowing-agent / foam technology context, not freedom-to-operate advice.</p>
@@ -901,7 +1016,7 @@
               <tr><th>Role</th><th>Name</th><th>Signature</th><th>Date</th></tr>
             </thead>
             <tbody>
-              <tr><td>Prepared</td><td>Technical — Farmula pack Rev. C</td><td></td><td>28 Sep 2026</td></tr>
+              <tr><td>Prepared</td><td>Technical — Bazz Foam formulation pack Rev. C</td><td></td><td>28 Sep 2026</td></tr>
               <tr><td>Issued to</td><td>Bazzfoam</td><td></td><td></td></tr>
               <tr><td>Lab acceptance</td><td>First cup series OC-01 + CC-01 complete</td><td></td><td></td></tr>
               <tr><td>Next revision</td><td>After cream / rise / density return</td><td></td><td></td></tr>
@@ -912,7 +1027,7 @@
           Prepared from the supplied TDS files, PO photographs and the xu wang memo. Flokser, Honeywell, Arkema, DABCO and CREAPOL names are the property of their owners. Commercial use needs controlled lab validation.
         </div>
         <div class="folio">
-          <span>Farmula · Rev. C</span>
+          <span>Bazz Foam · Rev. C</span>
           <b>Notes</b>
           <span>07</span>
         </div>
@@ -920,5 +1035,23 @@
     </section>
 
   </div>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <img src="assets/bazz-logo.png" alt="Bazz Foam Spray" class="footer-logo brand-logo" />
+      <div>
+        <strong>Horsham, PA, USA</strong>
+        <p>411 Caredean Dr, Unit A, Horsham, PA 19044</p>
+      </div>
+      <div>
+        <strong>Mississauga, ON, Canada</strong>
+        <p>1011 Haultain Ct, Unit 9, Mississauga, ON L4W 1W1</p>
+      </div>
+      <div>
+        <strong><a href="tel:+18773072299">+1 877 307 2299</a></strong>
+        <p><a href="https://bazzfoam.com/us/en">bazzfoam.com</a></p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
