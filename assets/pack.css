@@ -35,13 +35,14 @@
       scroll-behavior: smooth;
       overflow-x: clip;
       max-width: 100%;
-    }
-
-    body {
       background:
         radial-gradient(1100px 480px at 8% -8%, rgba(96, 143, 62, 0.16), transparent 52%),
         radial-gradient(900px 420px at 92% 0%, rgba(54, 173, 91, 0.08), transparent 48%),
         #1c2533;
+    }
+
+    body {
+      background: transparent;
       color: var(--ink);
       font-family: Arial, Helvetica, "Segoe UI", sans-serif;
       font-size: 16px;
@@ -53,8 +54,36 @@
       print-color-adjust: exact;
     }
 
+    .chrome-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .chrome-bg img {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: min(540px, 40vw);
+      max-width: none;
+      object-fit: cover;
+      opacity: 0.5;
+      filter: blur(4px);
+    }
+    .chrome-bg-lab {
+      left: 0;
+      object-position: 36% 64%;
+    }
+    .chrome-bg-chem {
+      right: 0;
+      object-position: 90% 40%;
+    }
+
     .util-bar {
-      background: #05080d;
+      position: relative;
+      z-index: 2;
+      background: rgba(5, 8, 13, 0.78);
       color: #d7e0d4;
       font-size: 13px;
       font-weight: 700;
@@ -73,7 +102,7 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      background: #070b12;
+      background: rgba(7, 11, 18, 0.82);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(96, 143, 62, 0.45);
@@ -117,14 +146,16 @@
     }
 
     .toolbar {
+      position: relative;
+      z-index: 2;
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: flex-start;
       gap: 5px;
-      background: transparent;
-      padding: 0;
+      background: rgba(7, 11, 18, 0.82);
+      padding: 0 16px 12px;
       min-width: 0;
       overflow-x: auto;
       scrollbar-width: thin;
@@ -139,6 +170,7 @@
       font-weight: 700;
       font-family: inherit;
       font-size: 12px;
+      text-transform: uppercase;
       padding: 7px 10px;
       border-radius: 6px;
       cursor: pointer;
@@ -159,6 +191,51 @@
     }
 
     .toolbar .ghost:hover { background: var(--green-dark); border-color: var(--green-dark); color: #fff; }
+
+    @media (min-width: 1024px) {
+      body { padding-left: 0; }
+      .toolbar {
+        position: sticky;
+        top: 86px;
+        left: 0;
+        z-index: 15;
+        width: 0;
+        height: 0;
+        margin: 0;
+        padding: 10px 0 0 max(12px, calc((100vw - min(210mm, 100vw - 20px)) / 2 - 212px));
+        overflow: visible;
+        background: none;
+        border: none;
+        box-shadow: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 6px;
+      }
+      .toolbar a, .toolbar button {
+        width: 200px;
+        min-width: 200px;
+        min-height: 38px;
+        text-align: left;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 6px;
+        padding: 8px 12px;
+        font-size: 13px;
+        color: #e7eee4;
+        white-space: nowrap;
+        line-height: 1.25;
+      }
+      .toolbar a:hover, .toolbar button:hover {
+        color: #fff;
+        background: rgba(96, 143, 62, 0.35);
+        border-color: rgba(157, 206, 106, 0.55);
+      }
+      .toolbar .ghost { display: none; }
+    }
 
     .save-pdf-sticky {
       position: fixed;
@@ -184,9 +261,11 @@
       border-color: var(--green-dark);
     }
 
-    .sheet-stack { padding: 16px 0 24px; }
+    .sheet-stack { position: relative; z-index: 1; padding: 16px 0 24px; }
 
     .site-footer {
+      position: relative;
+      z-index: 1;
       background: var(--navy);
       color: #d5dde6;
       padding: 28px 16px 36px;
@@ -488,6 +567,12 @@
     }
 
     @media (max-width: 560px) {
+      .chrome-bg-lab {
+        left: 0;
+        width: 100%;
+        object-position: center 55%;
+      }
+      .chrome-bg-chem { display: none; }
       body { font-size: 15px; padding-bottom: 76px; }
       .page { width: calc(100% - 12px); margin-bottom: 12px; }
       .page-inner, .cover-body { padding: 16px 14px 20px; }
@@ -496,7 +581,7 @@
         position: static;
         top: auto;
       }
-      .site-header-inner { width: calc(100% - 16px); flex-direction: column; align-items: flex-start; }
+      .site-header-inner { width: calc(100% - 16px); }
       .header-logo-img { height: 44px; }
       .wordmark { font-size: 22px; }
       .toolbar {
@@ -508,14 +593,15 @@
         justify-content: flex-start;
         overflow: visible;
         gap: 6px;
+        padding: 0 8px 12px;
       }
       .toolbar a, .toolbar button {
         flex: 1 1 calc(50% - 6px);
         text-align: center;
-        white-space: normal;
-        line-height: 1.2;
-        font-size: 12px;
-        padding: 8px 10px;
+        white-space: nowrap;
+        line-height: 1.25;
+        font-size: 10px;
+        padding: 8px 6px;
         background: rgba(255, 255, 255, 0.08);
         color: #e7eee4;
         border-color: rgba(255, 255, 255, 0.14);
@@ -542,6 +628,7 @@
     }
 
     @media print {
+      .chrome-bg { display: none !important; }
       html, body {
         background: #fff;
         font-size: 16px;
@@ -556,6 +643,7 @@
       .util-bar, .site-header, .sheet-stack { padding: 0; margin: 0; }
       .util-bar,
       .site-header,
+      .toolbar,
       .site-footer,
       .save-pdf-sticky {
         display: none !important;

@@ -10,6 +10,10 @@
   <script src="assets/pack.js" defer></script>
 </head>
 <body data-pdf="assets/BazzLab-Lab-50.pdf">
+  <div class="chrome-bg" aria-hidden="true">
+    <img class="chrome-bg-lab" src="assets/bg-lab.png" alt="" />
+    <img class="chrome-bg-chem" src="assets/bg-chemicals.png" alt="" />
+  </div>
   <div class="util-bar">
     <a href="tel:+18773072299">+1 877 307 2299</a>
     <span>BazzLab · 50 g lab cup</span>
@@ -20,22 +24,22 @@
         <img class="header-logo-img brand-logo" src="assets/bazzlab.svg" alt="" />
         <span class="wordmark" aria-label="BazzLab"><span class="wm-bazz">BAZZ</span><span class="wm-lab">LAB</span></span>
       </a>
-      <nav class="toolbar" aria-label="Formulation sections">
-        <a href="index.html">Index</a>
-        <a class="best-nav" href="index.html#page-best">Best</a>
-        <a href="index.html#page-oc">Open Cell</a>
-        <a href="index.html#page-cc">Closed Cell</a>
-        <a href="lab-50.html" class="current">50 g CC</a>
-        <a href="#page-50g-oc">50 g OC</a>
-        <a href="comparison.html">Comparison</a>
-        <a href="index.html#page-polyols">Polyols</a>
-        <a href="index.html#page-catalysts">Catalysts</a>
-        <a href="index.html#page-lab">Lab Method</a>
-        <a href="index.html#page-patents">Notes</a>
-        <button type="button" class="ghost" onclick="savePackPdf()">Save PDF</button>
-      </nav>
     </div>
   </header>
+  <nav class="toolbar" aria-label="Formulation sections">
+    <a href="index.html">Index</a>
+    <a class="best-nav" href="index.html#page-best">Best</a>
+    <a href="index.html#page-oc">Open Cell</a>
+    <a href="index.html#page-cc">Closed Cell</a>
+    <a href="lab-50.html" class="current">50 g Closed Cell</a>
+    <a href="#page-50g-oc">50 g Open Cell</a>
+    <a href="comparison.html">Comparison</a>
+    <a href="index.html#page-polyols">Polyols</a>
+    <a href="index.html#page-catalysts">Catalysts</a>
+    <a href="index.html#page-lab">Lab Method</a>
+    <a href="index.html#page-patents">Notes</a>
+    <button type="button" class="ghost" onclick="savePackPdf()">Save PDF</button>
+  </nav>
   <button type="button" class="save-pdf-sticky" onclick="savePackPdf()">Save PDF</button>
 
   <div class="sheet-stack">
