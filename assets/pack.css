@@ -194,10 +194,30 @@
 
     .toolbar .ghost:hover { background: var(--green-dark); border-color: var(--green-dark); color: #fff; }
 
+    .toolbar-heading {
+      margin: 0;
+      color: #39ff14;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+
     @media (min-width: 1024px) {
+      :root {
+        --sheet-w: min(210mm, 100vw - 20px);
+        --menu-left: max(12px, calc((100vw - var(--sheet-w)) / 2 - 236px));
+      }
       body { padding-left: 0; padding-bottom: 24px; }
       .save-pdf-sticky { display: none; }
-      .toolbar-wrap { display: contents; }
+      .site-header-inner {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding-left: var(--menu-left);
+        padding-right: max(16px, calc((100vw - var(--sheet-w)) / 2));
+      }
       .toolbar {
         position: sticky;
         top: 86px;
@@ -206,7 +226,7 @@
         width: 0;
         height: 0;
         margin: 0;
-        padding: 10px 0 0 max(12px, calc((100vw - min(210mm, 100vw - 20px)) / 2 - 212px));
+        padding: 10px 0 0 var(--menu-left);
         overflow: visible;
         background: none;
         border: none;
@@ -219,9 +239,8 @@
         justify-content: flex-start;
         gap: 6px;
       }
-      .toolbar-side {
-        padding-left: min(calc(100vw - 212px), calc((100vw + min(210mm, 100vw - 20px)) / 2 + 12px));
-      }
+      .toolbar .extra-first { margin-top: calc(3 * 38px + 2 * 6px); }
+      .toolbar-heading { width: 200px; padding: 0 12px 4px; font-size: 16px; }
       .toolbar a, .toolbar button {
         width: 200px;
         min-width: 200px;
@@ -598,21 +617,21 @@
       .site-header-inner { width: calc(100% - 16px); }
       .header-logo-img { height: 44px; }
       .wordmark { font-size: 22px; }
-      .toolbar-wrap {
+      .toolbar {
         display: flex;
+        flex-direction: row;
         flex-wrap: wrap;
         width: 100%;
         align-items: stretch;
         justify-content: flex-start;
+        overflow: visible;
         gap: 6px;
         padding: 0 8px 12px;
-        background: rgba(7, 11, 18, 0.82);
       }
-      .toolbar {
-        display: contents;
+      .toolbar-heading {
+        flex: 1 1 100%;
         width: auto;
-        padding: 0;
-        background: none;
+        padding: 6px 4px 0;
       }
       .toolbar a, .toolbar button {
         flex: 1 1 calc(50% - 6px);
