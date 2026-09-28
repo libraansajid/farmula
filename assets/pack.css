@@ -80,24 +80,6 @@
       object-position: 90% 40%;
     }
 
-    .util-bar {
-      position: relative;
-      z-index: 2;
-      background: rgba(5, 8, 13, 0.78);
-      color: #d7e0d4;
-      font-size: 13px;
-      font-weight: 700;
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      padding: 8px 32px;
-      padding-top: calc(8px + env(safe-area-inset-top));
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .util-bar a { color: #e8f3df; text-decoration: none; }
-
     .site-header {
       position: sticky;
       top: 0;
@@ -118,6 +100,7 @@
       justify-content: space-between;
       gap: 16px;
       padding: 12px 0;
+      padding-top: calc(12px + env(safe-area-inset-top));
     }
 
     .brand {
@@ -143,6 +126,25 @@
       max-width: 160px;
       display: block;
       object-fit: contain;
+    }
+
+    .header-save {
+      appearance: none;
+      flex: 0 0 auto;
+      border: 1px solid var(--green);
+      background: var(--green);
+      color: #fff;
+      font-weight: 700;
+      font-family: inherit;
+      font-size: 13px;
+      text-transform: uppercase;
+      padding: 9px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .header-save:hover {
+      background: var(--green-dark);
+      border-color: var(--green-dark);
     }
 
     .toolbar {
@@ -193,7 +195,9 @@
     .toolbar .ghost:hover { background: var(--green-dark); border-color: var(--green-dark); color: #fff; }
 
     @media (min-width: 1024px) {
-      body { padding-left: 0; }
+      body { padding-left: 0; padding-bottom: 24px; }
+      .save-pdf-sticky { display: none; }
+      .toolbar-wrap { display: contents; }
       .toolbar {
         position: sticky;
         top: 86px;
@@ -214,6 +218,9 @@
         align-items: flex-start;
         justify-content: flex-start;
         gap: 6px;
+      }
+      .toolbar-side {
+        padding-left: min(calc(100vw - 212px), calc((100vw + min(210mm, 100vw - 20px)) / 2 + 12px));
       }
       .toolbar a, .toolbar button {
         width: 200px;
@@ -259,6 +266,11 @@
     .save-pdf-sticky:hover {
       background: var(--green-dark);
       border-color: var(--green-dark);
+    }
+
+    @media (min-width: 561px) {
+      body { padding-bottom: 24px; }
+      .save-pdf-sticky { display: none; }
     }
 
     .sheet-stack { position: relative; z-index: 1; padding: 16px 0 24px; }
@@ -312,6 +324,7 @@
       box-shadow: 0 10px 28px rgba(0,0,0,.28);
       position: relative;
       overflow-x: hidden;
+      scroll-margin-top: 90px;
     }
 
     .page-inner {
@@ -567,6 +580,7 @@
     }
 
     @media (max-width: 560px) {
+      .header-save { display: none; }
       .chrome-bg-lab {
         left: 0;
         width: 100%;
@@ -584,16 +598,21 @@
       .site-header-inner { width: calc(100% - 16px); }
       .header-logo-img { height: 44px; }
       .wordmark { font-size: 22px; }
-      .toolbar {
+      .toolbar-wrap {
         display: flex;
-        flex-direction: row;
         flex-wrap: wrap;
         width: 100%;
         align-items: stretch;
         justify-content: flex-start;
-        overflow: visible;
         gap: 6px;
         padding: 0 8px 12px;
+        background: rgba(7, 11, 18, 0.82);
+      }
+      .toolbar {
+        display: contents;
+        width: auto;
+        padding: 0;
+        background: none;
       }
       .toolbar a, .toolbar button {
         flex: 1 1 calc(50% - 6px);
@@ -643,6 +662,7 @@
       .util-bar, .site-header, .sheet-stack { padding: 0; margin: 0; }
       .util-bar,
       .site-header,
+      .header-save,
       .toolbar,
       .site-footer,
       .save-pdf-sticky {

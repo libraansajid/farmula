@@ -14,32 +14,32 @@
     <img class="chrome-bg-lab" src="assets/bg-lab.png" alt="" />
     <img class="chrome-bg-chem" src="assets/bg-chemicals.png" alt="" />
   </div>
-  <div class="util-bar">
-    <a href="tel:+18773072299">+1 877 307 2299</a>
-    <span>BazzLab · Formulation pack</span>
-  </div>
   <header class="site-header">
     <div class="site-header-inner">
       <a class="brand" href="#page-cover">
         <img class="header-logo-img brand-logo" src="assets/bazzlab.svg" alt="" />
         <span class="wordmark" aria-label="BazzLab"><span class="wm-bazz">BAZZ</span><span class="wm-lab">LAB</span></span>
       </a>
+      <button type="button" class="header-save" onclick="savePackPdf()">Save PDF</button>
     </div>
   </header>
-  <nav class="toolbar" aria-label="Formulation sections">
-    <a href="#page-cover">Index</a>
-    <a class="best-nav" href="#page-best">Best</a>
-    <a href="#page-oc">Open Cell</a>
-    <a href="#page-cc">Closed Cell</a>
-    <a href="lab-50.html">50 g Closed Cell</a>
-    <a href="lab-50.html#page-50g-oc">50 g Open Cell</a>
-    <a href="comparison.html">Comparison</a>
-    <a href="#page-polyols">Polyols</a>
-    <a href="#page-catalysts">Catalysts</a>
-    <a href="#page-lab">Lab Method</a>
-    <a href="#page-patents">Notes</a>
-    <button type="button" class="ghost" onclick="savePackPdf()">Save PDF</button>
-  </nav>
+  <div class="toolbar-wrap">
+    <nav class="toolbar toolbar-main" aria-label="Formulation sections">
+      <a href="#page-cover">Index</a>
+      <a class="best-nav" href="#page-best">Best</a>
+      <a href="#page-oc">Open Cell</a>
+      <a href="#page-cc">Closed Cell</a>
+      <a href="#page-polyols">Polyols</a>
+      <a href="#page-catalysts">Catalysts</a>
+      <a href="#page-lab">Lab Method</a>
+      <a href="#page-patents">Notes</a>
+    </nav>
+    <nav class="toolbar toolbar-side" aria-label="Other pack pages">
+      <a href="lab-50.html">50 g Closed Cell</a>
+      <a href="lab-50.html#page-50g-oc">50 g Open Cell</a>
+      <a href="comparison.html">Comparison</a>
+    </nav>
+  </div>
   <button type="button" class="save-pdf-sticky" onclick="savePackPdf()">Save PDF</button>
 
   <div class="sheet-stack">
