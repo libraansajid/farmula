@@ -35,6 +35,7 @@
     <p class="toolbar-heading extra-first">50 g Lab</p>
     <a class="toolbar-extra current" href="lab-50.html">50 g Closed Cell</a>
     <a class="toolbar-extra" href="lab-50.html#page-50g-oc">50 g Open Cell</a>
+    <a class="toolbar-extra" href="lab-50.html#page-50g-oc01">50 g OC-01</a>
     <a class="toolbar-extra" href="comparison.html">Comparison</a>
   </nav>
   <button type="button" class="save-pdf-sticky" onclick="savePackPdf()">Save PDF</button>
@@ -42,129 +43,89 @@
   <div class="sheet-stack">
     <section class="page page-tall" id="page-50g">
       <div class="page-inner">
-        <div class="running"><span>BazzLab</span><span>50 g lab cup</span></div>
-        <h2>50 g Lab Cup · BX-01 <span class="badge-best">Best</span> <span class="badge-new">New</span></h2>
+        <div class="running"><span>BazzLab</span><span>50 g closed-cell cup</span></div>
+        <h2>50 g · BX-01 Closed Cell <span class="badge-best">Best</span></h2>
         <div class="rule"></div>
-        <p class="lead">Closed-cell pour is <b>50.00 g B (includes 5.00 g HFO-1233zd(E)) + 41.40 g A</b>. HFO is mandatory. Cream/gel are sped up. Mix 4–5 s. Weigh to 0.01 g.</p>
+        <p class="lead">Pour this first. <b>50.00 g B (5.00 g HFO in) + 41.40 g A</b>. Not 1:1. Write which high-OH drum and which flow drum. Mix 4–5 s. Weigh to 0.01 g.</p>
 
         <div class="grid-2">
           <div class="box best">
-            <h3 style="margin-top:0;">Cup size</h3>
+            <h3 style="margin-top:0;">Cup</h3>
             <table class="kvs tight">
               <tr><td>B-side (HFO in)</td><td>50.00 g</td></tr>
-              <tr><td>of which HFO-1233zd(E)</td><td>5.00 g</td></tr>
-              <tr><td>A-side (PMDI 31 % NCO)</td><td>41.40 g</td></tr>
-              <tr><td>Total</td><td>91.40 g</td></tr>
-              <tr><td>Index</td><td>125</td></tr>
-              <tr><td>Mix</td><td>A into B · 4–5 s · 2 500–3 000 rpm</td></tr>
-              <tr><td>B cup temperature</td><td>15–18 °C after HFO</td></tr>
+              <tr><td>HFO-1233zd(E)</td><td>5.00 g · last, 15–18 °C, cap</td></tr>
+              <tr><td>A-side PMDI 31.0 % NCO</td><td>41.40 g · index 125</td></tr>
+              <tr><td>Water in this cup</td><td>0.60 g → 11.29 g of the A-side</td></tr>
+              <tr><td>Polyols in this cup</td><td>35.05 g → 30.11 g of the A-side</td></tr>
             </table>
           </div>
           <div class="box">
             <h3 style="margin-top:0;">Trial header</h3>
             <table class="kvs tight">
-              <tr><td>Date</td><td></td></tr>
-              <tr><td>Operator</td><td></td></tr>
-              <tr><td>Drum · high-OH</td><td>TB-307 / PE 104</td></tr>
-              <tr><td>Drum · flow</td><td>TEROL 250 / PE 103</td></tr>
-              <tr><td>Cup T</td><td>A 21–23 °C · B 15–18 °C</td></tr>
-              <tr><td>Cup ID</td><td>BX-01-50-</td></tr>
+              <tr class="record-line"><td>Date / operator</td><td></td></tr>
+              <tr class="record-line"><td>High-OH drum</td><td>TB-307 or PE 104</td></tr>
+              <tr class="record-line"><td>Flow drum</td><td>TEROL 250 or PE 103</td></tr>
+              <tr class="record-line"><td>PMDI lot / %NCO</td><td></td></tr>
+              <tr class="record-line"><td>Cup ID</td><td>BX-01-50-</td></tr>
             </table>
           </div>
         </div>
 
-        <h3>BX-01 weigh sheet · 50.00 g B · HFO mandatory</h3>
-        <p class="tiny">Weigh in this order. Tare a dry, closable B cup. Water before catalysts. <b>HFO last</b>, cup at 15–18 °C, cap at once. Write the actual in the last column.</p>
+        <h3>Weigh sheet · order as listed</h3>
         <div class="scroll">
           <table>
             <thead>
               <tr>
                 <th>#</th>
                 <th>Ingredient</th>
+                <th class="num">pbw</th>
                 <th class="num">Target g</th>
                 <th>Actual g</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>1</td><td>ISOEXTER TB-307 / KIMpol PE 104</td><td class="num">20.65</td><td class="weigh-actual"></td></tr>
-              <tr><td>2</td><td>TEROL 250 / KIMpol PE 103</td><td class="num">12.40</td><td class="weigh-actual"></td></tr>
-              <tr><td>3</td><td>CREAPOL PD 230</td><td class="num">2.00</td><td class="weigh-actual"></td></tr>
-              <tr><td>4</td><td>TCPP</td><td class="num">3.00</td><td class="weigh-actual"></td></tr>
-              <tr><td>5</td><td>TEP</td><td class="num">2.00</td><td class="weigh-actual"></td></tr>
-              <tr><td>6</td><td>Reactive FR</td><td class="num">1.00</td><td class="weigh-actual"></td></tr>
-              <tr><td>7</td><td>Emulsifier</td><td class="num">0.875</td><td class="weigh-actual"></td></tr>
-              <tr><td>8</td><td>Closed-cell silicone</td><td class="num">0.75</td><td class="weigh-actual"></td></tr>
-              <tr><td>9</td><td>Water (deionized / distilled)</td><td class="num">0.60</td><td class="weigh-actual"></td></tr>
-              <tr><td>10</td><td>PC-15</td><td class="num">0.725</td><td class="weigh-actual"></td></tr>
-              <tr><td>11</td><td>DABCO 2040</td><td class="num">0.550</td><td class="weigh-actual"></td></tr>
-              <tr><td>12</td><td>CAT-T</td><td class="num">0.275</td><td class="weigh-actual"></td></tr>
-              <tr><td>13</td><td>PC-37</td><td class="num">0.175</td><td class="weigh-actual"></td></tr>
-              <tr><td>14</td><td><b>HFO-1233zd(E)</b> — last, cold, cap</td><td class="num"><b>5.00</b></td><td class="weigh-actual"></td></tr>
-              <tr><td></td><td><b>B-side total</b></td><td class="num"><b>50.000</b></td><td class="weigh-actual"></td></tr>
-              <tr><td>A</td><td><b>PMDI, 31.0 % NCO</b></td><td class="num"><b>41.40</b></td><td class="weigh-actual"></td></tr>
+              <tr><td>1</td><td>TB-307 or PE 104 — write which</td><td class="num">41.3</td><td class="num">20.65</td><td class="weigh-actual"></td></tr>
+              <tr><td>2</td><td>TEROL 250 or PE 103 — write which</td><td class="num">24.8</td><td class="num">12.40</td><td class="weigh-actual"></td></tr>
+              <tr><td>3</td><td>CREAPOL PD 230</td><td class="num">4.0</td><td class="num">2.00</td><td class="weigh-actual"></td></tr>
+              <tr><td>4</td><td>TCPP lot XLT20260701</td><td class="num">6.0</td><td class="num">3.00</td><td class="weigh-actual"></td></tr>
+              <tr><td>5</td><td>TEP</td><td class="num">4.0</td><td class="num">2.00</td><td class="weigh-actual"></td></tr>
+              <tr><td>6</td><td>Reactive FR</td><td class="num">2.0</td><td class="num">1.00</td><td class="weigh-actual"></td></tr>
+              <tr><td>7</td><td>Emulsifier</td><td class="num">1.75</td><td class="num">0.875</td><td class="weigh-actual"></td></tr>
+              <tr><td>8</td><td>Closed-cell silicone</td><td class="num">1.5</td><td class="num">0.75</td><td class="weigh-actual"></td></tr>
+              <tr><td>9</td><td>Water</td><td class="num">1.20</td><td class="num">0.60</td><td class="weigh-actual"></td></tr>
+              <tr><td>10</td><td>PC-15</td><td class="num">1.45</td><td class="num">0.725</td><td class="weigh-actual"></td></tr>
+              <tr><td>11</td><td>DABCO 2040</td><td class="num">1.10</td><td class="num">0.550</td><td class="weigh-actual"></td></tr>
+              <tr><td>12</td><td>CAT-T</td><td class="num">0.55</td><td class="num">0.275</td><td class="weigh-actual"></td></tr>
+              <tr><td>13</td><td>PC-37</td><td class="num">0.35</td><td class="num">0.175</td><td class="weigh-actual"></td></tr>
+              <tr><td>14</td><td><b>HFO-1233zd(E)</b> — last, cold, cap</td><td class="num"><b>10.0</b></td><td class="num"><b>5.00</b></td><td class="weigh-actual"></td></tr>
+              <tr><td></td><td><b>B-side</b></td><td class="num"><b>100.00</b></td><td class="num"><b>50.000</b></td><td class="weigh-actual"></td></tr>
+              <tr><td>A</td><td><b>PMDI, 31.0 % NCO</b></td><td class="num"><b>82.8</b></td><td class="num"><b>41.40</b></td><td class="weigh-actual"></td></tr>
             </tbody>
           </table>
         </div>
-        <p class="tiny">HFO 5.00 g is 10 pbw on 50 g. Water 0.60 g is 1.20 pbw. Water 0.60 ÷ 9.0 = 0.0667 eq → 11.29 g PMDI at index 125. Polyols (TB-307 20.65 + TEROL 12.40 + PD 230 2.00) → 30.11 g PMDI at index 125. Total A = <b>41.40 g</b>. Do not pad a short cup with extra water. If HFO flashes off while weighing, recap and reweigh — do not add extra water to compensate.</p>
 
-        <h3>Checklist · before the pour <span class="badge-new">New</span></h3>
-        <div class="grid-2">
-          <div class="box">
-            <h3 style="margin-top:0;">Safety and bench</h3>
-            <label class="check"><input type="checkbox" /> Gloves, goggles, lab coat</label>
-            <label class="check"><input type="checkbox" /> Fume hood or good ventilation</label>
-            <label class="check"><input type="checkbox" /> Balance reads 0.01 g and is level</label>
-            <label class="check"><input type="checkbox" /> Two dry cups, labeled A and B</label>
-            <label class="check"><input type="checkbox" /> Timer ready (cream / gel / rise / tack-free)</label>
-            <label class="check"><input type="checkbox" /> Thermometer · A at 21–23 °C · B at 15–18 °C after HFO</label>
-            <label class="check"><input type="checkbox" /> Mixer 2 500–3 000 rpm, clean blade</label>
-            <label class="check"><input type="checkbox" /> Paper towel / waste cup for the blade</label>
-          </div>
-          <div class="box">
-            <h3 style="margin-top:0;">Drums and grades</h3>
-            <label class="check"><input type="checkbox" /> High-OH drum is TB-307 or PE 104 — write which</label>
-            <label class="check"><input type="checkbox" /> Flow drum is TEROL 250 or PE 103 — write which</label>
-            <label class="check"><input type="checkbox" /> PD 230, TCPP, TEP, reactive FR on the bench</label>
-            <label class="check"><input type="checkbox" /> Closed-cell silicone — not the open-cell grade</label>
-            <label class="check"><input type="checkbox" /> PC-15, PC-37, CAT-T, DABCO 2040</label>
-            <label class="check"><input type="checkbox" /> PMDI is 31.0 % NCO (write lot / %NCO)</label>
-            <label class="check"><input type="checkbox" /> HFO-1233zd(E) on the bench — mandatory for this cup</label>
-            <label class="check"><input type="checkbox" /> HFO cylinder / bottle cold · hood on · no open flame</label>
-            <label class="check"><input type="checkbox" /> Closable B cup ready (HFO boils at ~19 °C)</label>
-            <label class="check"><input type="checkbox" /> No sucrose, Mannich, K-15, DMCHA or pentane in this cup</label>
-          </div>
-        </div>
-
-        <h3>Checklist · pour and record</h3>
-        <div class="grid-2">
+        <div class="grid-2" style="margin-top:12px;">
           <div class="box">
             <h3 style="margin-top:0;">Pour</h3>
-            <label class="check"><input type="checkbox" /> Resin mixed homogeneous, then chilled to 15–18 °C</label>
-            <label class="check"><input type="checkbox" /> HFO 5.00 g weighed last · cup capped at once</label>
-            <label class="check"><input type="checkbox" /> A weighed 41.40 g in a dry cup</label>
-            <label class="check"><input type="checkbox" /> Pour A into B — start the clock at mix start</label>
-            <label class="check"><input type="checkbox" /> Mix 4–5 s only — cream is 3–6 s, then do not touch</label>
-            <label class="check"><input type="checkbox" /> Leave cup 24 h before cutting</label>
+            <label class="check"><input type="checkbox" /> Hood on · A 21–23 °C · B 15–18 °C after HFO</label>
+            <label class="check"><input type="checkbox" /> Closed-cell silicone · no K-15 / DMCHA / sucrose</label>
+            <label class="check"><input type="checkbox" /> HFO 5.00 g last · cap · A 41.40 g</label>
+            <label class="check"><input type="checkbox" /> A into B · 4–5 s · 2 500–3 000 rpm · do not touch after cream</label>
           </div>
           <div class="box">
-            <h3 style="margin-top:0;">Record (write)</h3>
+            <h3 style="margin-top:0;">Record</h3>
             <table class="kvs tight">
-              <tr><td>Cream</td><td>s &nbsp;&nbsp; target 3–6</td></tr>
-              <tr><td>Gel</td><td>s &nbsp;&nbsp; target 8–15</td></tr>
-              <tr><td>Rise</td><td>s</td></tr>
-              <tr><td>Tack-free</td><td>s &nbsp;&nbsp; target 15–28</td></tr>
-              <tr><td>Collapse / shrink / scorch</td><td></td></tr>
-              <tr><td>Free-rise density</td><td>kg/m³ &nbsp;&nbsp; target 32–38</td></tr>
-              <tr><td>Pass?</td><td>3 cups, no collapse, times repeat</td></tr>
+              <tr class="record-line"><td>Cream / gel / rise / tack-free</td><td>s &nbsp; 3–6 / 8–15 / — / 15–28</td></tr>
+              <tr class="record-line"><td>Density</td><td>kg/m³ &nbsp; 32–38</td></tr>
+              <tr class="record-line"><td>Shrink / scorch / cells</td><td></td></tr>
             </table>
           </div>
         </div>
-
         <div class="note">
-          Half-cup (25 g B, 2.50 g HFO, 20.70 g A) is allowed only if the 0.175 g PC-37 weigh is trusted. Prefer 50.00 g B. Mix 4–5 s. Open-cell 50 g is the next sheet.
+          If HFO flashes off, recap and reweigh — do not add water. If the flow drum is TEROL 250 at EW 224.4, A ≈ 41.05 g. Open-cell 50 g is the next sheet.
         </div>
         <div class="folio">
-          <span>BazzLab · Rev. L</span>
+          <span>BazzLab · Rev. M</span>
           <b>50 g CC</b>
           <span><a href="#page-50g-oc">Open-cell 50 g</a></span>
         </div>
@@ -174,130 +135,179 @@
     <section class="page page-tall" id="page-50g-oc">
       <div class="page-inner">
         <div class="running"><span>BazzLab</span><span>50 g open-cell cup</span></div>
-        <h2>50 g Lab Cup · BX-02 Open Cell <span class="badge-best">Best</span> <span class="badge-new">New</span></h2>
+        <h2>50 g · BX-02 Open Cell <span class="badge-best">Best</span></h2>
         <div class="rule"></div>
-        <p class="lead">Open-cell 50 g cup. <b>No HFO</b> on this pour. Only if sucrose is on the floor. Do not blend with BX-01 or OC-01.</p>
+        <p class="lead">Only if sucrose is on the floor. <b>50.00 g B + 65.65 g A</b> at index 105. No HFO. Do not blend with BX-01 or OC-01.</p>
 
         <div class="grid-2">
           <div class="box best">
-            <h3 style="margin-top:0;">Cup size</h3>
+            <h3 style="margin-top:0;">Cup</h3>
             <table class="kvs tight">
               <tr><td>B-side</td><td>50.00 g</td></tr>
-              <tr><td>A-side (PMDI 31 % NCO)</td><td>65.65 g at index 105</td></tr>
-              <tr><td>Total</td><td>115.65 g</td></tr>
-              <tr><td>Index</td><td>100–110 (calc. 105)</td></tr>
-              <tr><td>Mix</td><td>A into B · 4–5 s · 2 500–3 000 rpm</td></tr>
-              <tr><td>Cup temperature</td><td>A and B 21–23 °C</td></tr>
+              <tr><td>A-side PMDI 31.0 % NCO</td><td>65.65 g · index 105</td></tr>
+              <tr><td>Water in this cup</td><td>2.60 g → 41.10 g of the A-side</td></tr>
+              <tr><td>Polyols in this cup</td><td>27.00 g → 24.55 g of the A-side</td></tr>
+              <tr><td>Sucrose OH assumed</td><td>400 · re-index if the lot differs</td></tr>
             </table>
           </div>
           <div class="box">
             <h3 style="margin-top:0;">Trial header</h3>
             <table class="kvs tight">
-              <tr><td>Date</td><td></td></tr>
-              <tr><td>Operator</td><td></td></tr>
-              <tr><td>Sucrose grade / OH#</td><td>assumed OH 400 for A-side</td></tr>
-              <tr><td>Flow polyester</td><td>TEROL 250 / PE 103</td></tr>
-              <tr><td>Cup T (A / B)</td><td>21–23 °C</td></tr>
-              <tr><td>Cup ID</td><td>BX-02-50-</td></tr>
+              <tr class="record-line"><td>Date / operator</td><td></td></tr>
+              <tr class="record-line"><td>Sucrose grade / OH#</td><td></td></tr>
+              <tr class="record-line"><td>Flow drum</td><td>TEROL 250 or PE 103</td></tr>
+              <tr class="record-line"><td>PMDI lot / %NCO</td><td></td></tr>
+              <tr class="record-line"><td>Cup ID</td><td>BX-02-50-</td></tr>
             </table>
           </div>
         </div>
 
-        <h3>BX-02 weigh sheet · 50.00 g B</h3>
-        <p class="tiny">Weigh in this order. Tare a dry B cup. Water before catalysts. Open-cell silicone only. No HFO. A-side assumes sucrose OH 400 — re-index when the lot OH is known.</p>
+        <h3>Weigh sheet · order as listed</h3>
         <div class="scroll">
           <table>
             <thead>
               <tr>
                 <th>#</th>
                 <th>Ingredient</th>
+                <th class="num">pbw</th>
                 <th class="num">Target g</th>
                 <th>Actual g</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>1</td><td>Sucrose / sucrose polyol</td><td class="num">19.00</td><td class="weigh-actual"></td></tr>
-              <tr><td>2</td><td>TEROL 250 / KIMpol PE 103</td><td class="num">8.00</td><td class="weigh-actual"></td></tr>
-              <tr><td>3</td><td>TEP</td><td class="num">10.45</td><td class="weigh-actual"></td></tr>
-              <tr><td>4</td><td>Reactive FR</td><td class="num">3.50</td><td class="weigh-actual"></td></tr>
-              <tr><td>5</td><td>Ecosurf SA-9</td><td class="num">2.00</td><td class="weigh-actual"></td></tr>
-              <tr><td>6</td><td>Open-cell silicone</td><td class="num">0.75</td><td class="weigh-actual"></td></tr>
-              <tr><td>7</td><td>Water (deionized / distilled)</td><td class="num">2.60</td><td class="weigh-actual"></td></tr>
-              <tr><td>8</td><td>PC-37</td><td class="num">0.85</td><td class="weigh-actual"></td></tr>
-              <tr><td>9</td><td>CAT-T</td><td class="num">0.80</td><td class="weigh-actual"></td></tr>
-              <tr><td>10</td><td>PC-15</td><td class="num">1.40</td><td class="weigh-actual"></td></tr>
-              <tr><td>11</td><td>BDMAEE or DEDEE</td><td class="num">0.45</td><td class="weigh-actual"></td></tr>
-              <tr><td>12</td><td>Biocide</td><td class="num">0.20</td><td class="weigh-actual"></td></tr>
-              <tr><td></td><td><b>B-side total</b></td><td class="num"><b>50.00</b></td><td class="weigh-actual"></td></tr>
-              <tr><td>A</td><td><b>PMDI, 31.0 % NCO</b></td><td class="num"><b>65.65</b></td><td class="weigh-actual"></td></tr>
+              <tr><td>1</td><td>Sucrose / sucrose polyol</td><td class="num">38.0</td><td class="num">19.00</td><td class="weigh-actual"></td></tr>
+              <tr><td>2</td><td>TEROL 250 or PE 103 — write which</td><td class="num">16.0</td><td class="num">8.00</td><td class="weigh-actual"></td></tr>
+              <tr><td>3</td><td>TEP</td><td class="num">20.9</td><td class="num">10.45</td><td class="weigh-actual"></td></tr>
+              <tr><td>4</td><td>Reactive FR</td><td class="num">7.0</td><td class="num">3.50</td><td class="weigh-actual"></td></tr>
+              <tr><td>5</td><td>Ecosurf SA-9</td><td class="num">4.0</td><td class="num">2.00</td><td class="weigh-actual"></td></tr>
+              <tr><td>6</td><td>Open-cell silicone</td><td class="num">1.5</td><td class="num">0.75</td><td class="weigh-actual"></td></tr>
+              <tr><td>7</td><td>Water</td><td class="num">5.2</td><td class="num">2.60</td><td class="weigh-actual"></td></tr>
+              <tr><td>8</td><td>PC-37</td><td class="num">1.70</td><td class="num">0.85</td><td class="weigh-actual"></td></tr>
+              <tr><td>9</td><td>CAT-T</td><td class="num">1.60</td><td class="num">0.80</td><td class="weigh-actual"></td></tr>
+              <tr><td>10</td><td>PC-15</td><td class="num">2.80</td><td class="num">1.40</td><td class="weigh-actual"></td></tr>
+              <tr><td>11</td><td>BDMAEE or DEDEE</td><td class="num">0.90</td><td class="num">0.45</td><td class="weigh-actual"></td></tr>
+              <tr><td>12</td><td>Biocide</td><td class="num">0.40</td><td class="num">0.20</td><td class="weigh-actual"></td></tr>
+              <tr><td></td><td><b>B-side</b></td><td class="num"><b>100.00</b></td><td class="num"><b>50.00</b></td><td class="weigh-actual"></td></tr>
+              <tr><td>A</td><td><b>PMDI, 31.0 % NCO</b></td><td class="num"><b>131.3</b></td><td class="num"><b>65.65</b></td><td class="weigh-actual"></td></tr>
             </tbody>
           </table>
         </div>
-        <p class="tiny">Water 2.60 g is 5.2 pbw. Water 2.60 ÷ 9.0 = 0.2889 eq → 41.10 g PMDI at index 105. Sucrose 19.00 (OH 400) + TEROL 8.00 (OH 260) → 24.55 g PMDI at index 105. Total A = <b>65.65 g</b>. If sucrose OH is 350, A ≈ 62 g. If 450, A ≈ 70 g. Do not force 1:1. No HFO on this cup.</p>
 
-        <h3>Checklist · open-cell 50 g <span class="badge-new">New</span></h3>
-        <div class="grid-2">
+        <div class="grid-2" style="margin-top:12px;">
           <div class="box">
-            <h3 style="margin-top:0;">Before</h3>
-            <label class="check"><input type="checkbox" /> Gloves, goggles, lab coat</label>
-            <label class="check"><input type="checkbox" /> Balance 0.01 g · two dry cups A and B</label>
-            <label class="check"><input type="checkbox" /> A and B at 21–23 °C</label>
-            <label class="check"><input type="checkbox" /> Sucrose polyol on the floor — write grade / OH#</label>
-            <label class="check"><input type="checkbox" /> TEROL 250 or PE 103 — write which</label>
-            <label class="check"><input type="checkbox" /> Open-cell silicone — not the closed-cell grade</label>
-            <label class="check"><input type="checkbox" /> PC-37, CAT-T, PC-15, BDMAEE, biocide</label>
-            <label class="check"><input type="checkbox" /> No HFO / pentane on this cup</label>
+            <h3 style="margin-top:0;">Pour</h3>
+            <label class="check"><input type="checkbox" /> A and B 21–23 °C · open-cell silicone only</label>
+            <label class="check"><input type="checkbox" /> No HFO · A 65.65 g (or re-indexed)</label>
+            <label class="check"><input type="checkbox" /> A into B · 4–5 s · do not touch after cream</label>
+            <label class="check"><input type="checkbox" /> If windows stay closed: +0.20 g water or −0.10 g PC-15</label>
           </div>
           <div class="box">
-            <h3 style="margin-top:0;">Pour and record</h3>
-            <label class="check"><input type="checkbox" /> B mixed homogeneous</label>
-            <label class="check"><input type="checkbox" /> A weighed 65.65 g (or re-indexed)</label>
-            <label class="check"><input type="checkbox" /> Pour A into B · mix 4–5 s · clock from mix start</label>
-            <label class="check"><input type="checkbox" /> Do not touch after cream · cut at 24 h</label>
-            <table class="kvs tight" style="margin-top:8px;">
-              <tr><td>Cream</td><td>s &nbsp;&nbsp; target 2–4</td></tr>
-              <tr><td>Rise</td><td>s</td></tr>
-              <tr><td>Tack-free</td><td>s</td></tr>
-              <tr><td>Free-rise density</td><td>kg/m³ &nbsp;&nbsp; target 16–22</td></tr>
-              <tr><td>Cells</td><td>open / tight / collapse</td></tr>
+            <h3 style="margin-top:0;">Record</h3>
+            <table class="kvs tight">
+              <tr class="record-line"><td>Cream / rise / tack-free</td><td>s &nbsp; target cream 2–4</td></tr>
+              <tr class="record-line"><td>Density</td><td>kg/m³ &nbsp; 16–22</td></tr>
+              <tr class="record-line"><td>Cells</td><td>open / tight / collapse</td></tr>
             </table>
           </div>
         </div>
+        <div class="note">
+          If sucrose OH is 350, A ≈ 62 g. If 450, A ≈ 70 g. Do not pour 1:1. Memo screen OC-01 is the next sheet — do not blend the B-sides.
+        </div>
+        <div class="folio">
+          <span>BazzLab · Rev. M</span>
+          <b>50 g OC</b>
+          <span><a href="#page-50g-oc01">OC-01 screen</a></span>
+        </div>
+      </div>
+    </section>
 
-        <h3>OC-01 memo screen · 50.00 g B</h3>
-        <p class="tiny">High-water System C. Not the best card. No HFO. A-side is calculated: 12.00 g water + 16.50 g sucrose (OH 400) against PMDI 31.0 % NCO (EW 135.5).</p>
+    <section class="page page-tall" id="page-50g-oc01">
+      <div class="page-inner">
+        <div class="running"><span>BazzLab</span><span>50 g OC-01 memo screen</span></div>
+        <h2>50 g · OC-01 Memo Screen</h2>
+        <div class="rule"></div>
+        <p class="lead">High-water System C. Not the best card. <b>50.00 g B + 196.6 g A</b> at index 100. A 1:1 shot is index ≈ 25 and is invalid. No HFO.</p>
+
+        <div class="grid-2">
+          <div class="box navy">
+            <h3 style="margin-top:0;">A-side · water then sucrose</h3>
+            <p>Water 12.00 ÷ 9.0 = 1.3333 eq → <b>180.67 g</b> PMDI</p>
+            <p>Sucrose 16.50 · OH 400 · EW 140.25 → 0.1176 eq → <b>15.94 g</b> PMDI</p>
+            <p>Index 100 = <b>196.6 g A</b>. Index 90 = 176.9 g · index 105 = 206.4 g.</p>
+          </div>
+          <div class="box gold">
+            <h3 style="margin-top:0;">Do not pour 1:1</h3>
+            <p>The old 20–28 g A charge never paid the water. 100 g B needs 393 g A. Pour BX-02 first if sucrose is on the floor.</p>
+          </div>
+        </div>
+
+        <h3>Weigh sheet · 50.00 g B</h3>
         <div class="scroll">
           <table>
             <thead>
               <tr>
                 <th>Ingredient</th>
-                <th class="num">g</th>
+                <th class="num">pbw</th>
+                <th class="num">Target g</th>
+                <th>Actual g</th>
                 <th>Ingredient</th>
-                <th class="num">g</th>
+                <th class="num">pbw</th>
+                <th class="num">Target g</th>
+                <th>Actual g</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>Sucrose / sucrose polyol</td><td class="num">16.50</td><td>Reactive FR</td><td class="num">4.00</td></tr>
-              <tr><td>TEP</td><td class="num">8.50</td><td>Ecosurf SA-9</td><td class="num">3.00</td></tr>
-              <tr><td>Open-cell silicone</td><td class="num">0.60</td><td>Water</td><td class="num">12.00</td></tr>
-              <tr><td>PC-37</td><td class="num">1.20</td><td>CAT-T</td><td class="num">1.20</td></tr>
-              <tr><td>PC-15</td><td class="num">2.10</td><td>BDMAEE / biocide</td><td class="num">0.50 / 0.40</td></tr>
-              <tr><td><b>B-side</b></td><td class="num"><b>50.00</b></td><td><b>A-side PMDI, index 100</b></td><td class="num"><b>196.6</b></td></tr>
+              <tr>
+                <td>Sucrose / sucrose polyol</td><td class="num">33.0</td><td class="num">16.50</td><td class="weigh-actual"></td>
+                <td>Reactive FR</td><td class="num">8.0</td><td class="num">4.00</td><td class="weigh-actual"></td>
+              </tr>
+              <tr>
+                <td>TEP</td><td class="num">17.0</td><td class="num">8.50</td><td class="weigh-actual"></td>
+                <td>Ecosurf SA-9</td><td class="num">6.0</td><td class="num">3.00</td><td class="weigh-actual"></td>
+              </tr>
+              <tr>
+                <td>Open-cell silicone</td><td class="num">1.2</td><td class="num">0.60</td><td class="weigh-actual"></td>
+                <td>Water</td><td class="num">24.0</td><td class="num">12.00</td><td class="weigh-actual"></td>
+              </tr>
+              <tr>
+                <td>PC-37</td><td class="num">2.4</td><td class="num">1.20</td><td class="weigh-actual"></td>
+                <td>CAT-T</td><td class="num">2.4</td><td class="num">1.20</td><td class="weigh-actual"></td>
+              </tr>
+              <tr>
+                <td>PC-15</td><td class="num">4.2</td><td class="num">2.10</td><td class="weigh-actual"></td>
+                <td>BDMAEE / biocide</td><td class="num">1.0 / 0.8</td><td class="num">0.50 / 0.40</td><td class="weigh-actual"></td>
+              </tr>
+              <tr>
+                <td><b>B-side</b></td><td class="num"><b>100.0</b></td><td class="num"><b>50.00</b></td><td class="weigh-actual"></td>
+                <td><b>A-side PMDI</b></td><td></td><td class="num"><b>196.6</b></td><td class="weigh-actual"></td>
+              </tr>
             </tbody>
           </table>
         </div>
-        <div class="box navy" style="margin-top:10px;">
-          <h3 style="margin-top:0;">Precise A-side</h3>
-          <p>Water 12.00 ÷ 9.0 = 1.3333 eq × 135.5 = <b>180.67 g</b> PMDI</p>
-          <p>Sucrose 16.50 · OH 400 · EW 56 100/400 = 140.25 → 16.50 ÷ 140.25 = 0.1176 eq × 135.5 = <b>15.94 g</b> PMDI</p>
-          <p>Index 100: 180.67 + 15.94 = <b>196.6 g A</b>. Index 90 = 176.9 g · index 105 = 206.4 g. Do not pour 20–28 g A — that never pays the water.</p>
+
+        <div class="grid-2" style="margin-top:12px;">
+          <div class="box">
+            <h3 style="margin-top:0;">Pour</h3>
+            <label class="check"><input type="checkbox" /> A and B 21–23 °C · no HFO</label>
+            <label class="check"><input type="checkbox" /> A weighed 196.6 g — not 20–28 g</label>
+            <label class="check"><input type="checkbox" /> A into B · 4–5 s · clock from mix start</label>
+            <label class="check"><input type="checkbox" /> Not blended with the BX-02 B-side</label>
+          </div>
+          <div class="box">
+            <h3 style="margin-top:0;">Record</h3>
+            <table class="kvs tight">
+              <tr class="record-line"><td>Cream / rise / tack-free</td><td>s &nbsp; 2–5 / 8–15 / 10–20</td></tr>
+              <tr class="record-line"><td>Density</td><td>kg/m³ &nbsp; 7–12</td></tr>
+              <tr class="record-line"><td>Cells</td><td>open / tight / collapse</td></tr>
+            </table>
+          </div>
         </div>
         <div class="note">
-          If cells stay closed on BX-02: +0.20 g water or −0.10 g PC-15. If it collapses: +0.15 g PC-15. Do not pour BX-02 and OC-01 as one blend.
+          If sucrose OH is 350, the sucrose term is 13.95 g A. If 450, 17.94 g A. The water term does not change. <a href="#page-50g">Back to BX-01</a>
         </div>
         <div class="folio">
-          <span>BazzLab · Rev. L</span>
-          <b>50 g OC</b>
+          <span>BazzLab · Rev. M</span>
+          <b>50 g OC-01</b>
           <span><a href="#page-50g">Closed-cell 50 g</a></span>
         </div>
       </div>

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BazzLab · Rev. M · Open-Cell &amp; Closed-Cell Laboratory Formulas</title>
+  <style>
+    @page { size: A4; margin: 10mm 11mm 12mm; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: #fff;
+      color: #1a2228;
+      font: 8.4pt/1.32 Arial, Helvetica, "Segoe UI", sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .page { break-after: page; page-break-after: always; }
+    .page:last-child { break-after: auto; page-break-after: auto; }
+    header.doc {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 2.5px solid #0c1c30;
+      padding-bottom: 6px;
+      margin-bottom: 8px;
+    }
+    .brand { display: flex; align-items: center; gap: 8px; }
+    .brand img { height: 28px; width: auto; }
+    .wordmark { font-weight: 800; letter-spacing: 0.04em; font-size: 15pt; color: #0c1c30; }
+    .wordmark span { color: #2d8f4f; }
+    .meta { text-align: right; font-size: 7.6pt; color: #4b5560; }
+    .meta b { display: block; color: #0c1c30; font-size: 8.6pt; }
+    h1 { font-size: 13pt; color: #0c1c30; margin: 2px 0 6px; line-height: 1.15; }
+    h2 {
+      font-size: 8.6pt;
+      color: #fff;
+      background: #0c1c30;
+      padding: 2.5px 7px;
+      margin: 7px 0 4px;
+      letter-spacing: 0.02em;
+    }
+    h3 { font-size: 8.4pt; color: #0c1c30; margin: 7px 0 3px; }
+    p { margin: 0 0 4px; }
+    .lead { color: #334049; }
+    table { width: 100%; border-collapse: collapse; margin: 3px 0 6px; }
+    th, td { border: 0.4pt solid #c5ced4; padding: 1.8px 4px; vertical-align: top; }
+    th { background: #e8eef2; color: #0c1c30; text-align: left; font-size: 7.6pt; }
+    td.n, th.n { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    tbody tr:nth-child(even) { background: #f6f8f7; }
+    .warn {
+      background: #fff6d8;
+      border: 1px solid #e0c35a;
+      padding: 5px 7px;
+      margin: 5px 0;
+    }
+    .ok {
+      background: #e7f6ec;
+      border: 1px solid #36ad5b;
+      padding: 5px 7px;
+      margin: 5px 0;
+    }
+    .navy {
+      background: #0c1c30;
+      color: #e8f0e9;
+      padding: 5px 7px;
+      margin: 5px 0;
+    }
+    .navy b { color: #8fe3a8; }
+    .tiny { font-size: 7.5pt; color: #4b5560; }
+    .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .kvs td:first-child { width: 46%; color: #4b5560; }
+    footer.doc {
+      margin-top: 8px;
+      border-top: 1px solid #c5ced4;
+      padding-top: 4px;
+      font-size: 7.2pt;
+      color: #5c6770;
+      display: flex;
+      justify-content: space-between;
+    }
+    .badge { display: inline-block; background: #36ad5b; color: #fff; font-size: 7pt; font-weight: 700; padding: 0 5px; margin-left: 4px; }
+  </style>
+</head>
+<body>
+  <section class="page">
+    <header class="doc">
+      <div class="brand">
+        <img src="assets/bazzlab.svg" alt="BazzLab" />
+        <div class="wordmark">BAZZ<span>LAB</span></div>
+      </div>
+      <div class="meta">
+        <b>Rev. M · 2 Oct 2026</b>
+        Laboratory starting formulas · 50 g B-side cups<br />
+        Corrected against catalyst-package method
+      </div>
+    </header>
+    <h1>Open-Cell &amp; Closed-Cell Laboratory Formulation Pack</h1>
+    <p class="lead">Same 4-page lab dossier as the 29 Sep Rev. F file, with the pours and A-sides corrected. These are controlled R&amp;D starting formulas, not a production specification or a fire certificate. TCPP lot data below is taken from the selected Elite Materials COA used in Rev. F.</p>
+
+    <h2>1. Current status at a glance</h2>
+    <table>
+      <thead>
+        <tr><th>System</th><th>Code</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Closed cell — pour first</td>
+          <td><b>BX-01</b></td>
+          <td>B-side defined. HFO-1233zd(E) 10.0 is in the 100. Index 125 → <b>50.00 g B + 41.40 g A</b>. Not 1:1.</td>
+        </tr>
+        <tr>
+          <td>Open cell — pour if sucrose is on the floor</td>
+          <td><b>BX-02</b></td>
+          <td>B-side defined. Index 105 at sucrose OH 400 → <b>50.00 g B + 65.65 g A</b>. Not 1:1.</td>
+        </tr>
+        <tr>
+          <td>Open cell — memo screen</td>
+          <td>OC-01</td>
+          <td>High-water System C. 12.00 g water + 16.50 g sucrose OH on 50 g B → <b>196.6 g A</b>. A 1:1 shot is index ≈ 25 and is invalid.</td>
+        </tr>
+        <tr>
+          <td>Open cell — polyether screen from Rev. F</td>
+          <td>OC-F1</td>
+          <td>B-side only. Do not fix A at 50 g until Polyether 1, Polyether 2 and sucrose OH# are on the TDS.</td>
+        </tr>
+        <tr>
+          <td>Closed cell — older screen</td>
+          <td>CC-01</td>
+          <td>90.2 g A / 100 g B at index 120. If used, cut water to 1.4 and add 10.0 HFO, then re-index to 79.3 g A / 109.4 g B. Prefer BX-01.</td>
+        </tr>
+        <tr>
+          <td>TCPP</td>
+          <td>Selected lot</td>
+          <td>Elite Materials Corp. TCPP, lot XLT20260701. Non-reactive. OH contribution = 0.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>2. What Rev. F got wrong</h2>
+    <table>
+      <thead>
+        <tr><th>Point</th><th>Rev. F (other AI)</th><th>This pack</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Closed-cell polyols</td>
+          <td>Stacked TB-307 + PE 104 + TEROL 250 + PE 103 as four polyesters</td>
+          <td>One high-OH drum (TB-307 <i>or</i> PE 104) + one flow drum (TEROL 250 <i>or</i> PE 103) + PD 230 trim. PE 104 is not a second backbone beside TB-307.</td>
+        </tr>
+        <tr>
+          <td>Closed-cell mix</td>
+          <td>Forced 50 g A : 50 g B by raising water to 2.09 so index hits 120 at 1:1</td>
+          <td>Set water for blow (1.20 with HFO 10.0), then pay NCO. 50 g B takes <b>41.40 g A</b> at index 125.</td>
+        </tr>
+        <tr>
+          <td>Closed-cell catalysts</td>
+          <td>K-15 / DMCHA / K-KAT / bismuth</td>
+          <td>PO 1009433 pack: PC-15, DABCO 2040, CAT-T, PC-37.</td>
+        </tr>
+        <tr>
+          <td>Open-cell A-side</td>
+          <td>Wanted 1:1 later; A left blank</td>
+          <td>Pay water NCO first, then polyol OH. BX-02 = 65.65 g A. OC-01 = 196.6 g A. Never pour 20–28 g A on the memo cup.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>3. TCPP — selected lot (from Rev. F COA)</h2>
+    <div class="cols">
+      <table class="kvs">
+        <tbody>
+          <tr><td>Chemical</td><td>Tris(2-chloroisopropyl) phosphate</td></tr>
+          <tr><td>CAS</td><td>13674-84-5</td></tr>
+          <tr><td>Lot</td><td>XLT20260701 · Elite Materials Corp.</td></tr>
+          <tr><td>Appearance</td><td>Colourless transparent liquid</td></tr>
+          <tr><td>Water / acid no.</td><td>0.026 wt% · 0.015 mg KOH/g</td></tr>
+        </tbody>
+      </table>
+      <table class="kvs">
+        <tbody>
+          <tr><td>APHA / viscosity @25 °C</td><td>10 · 66 cP</td></tr>
+          <tr><td>Phosphorus / chlorine</td><td>9.4 wt% · 32.4 wt%</td></tr>
+          <tr><td>SG @20 °C / RI</td><td>1.29 · 1.46</td></tr>
+          <tr><td>Cost input on COA</td><td>USD 0.43/lb ≈ USD 0.948/kg</td></tr>
+          <tr><td>Index treatment</td><td>OH contribution = 0</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>4. A-side method — water NCO, then polyol OH</h2>
+    <div class="navy">
+      EW<sub>polyol</sub> = 56 100 / OH# &nbsp;·&nbsp; EW<sub>water</sub> = 9.0 &nbsp;·&nbsp; EW<sub>PMDI</sub> = 4 200 / %NCO = <b>135.5</b> at 31.0 % NCO.<br />
+      A-side (g) = OH eq × (Index / 100) × 135.5. Do not force 1:1 and then back-calculate water.
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Card</th>
+          <th>Water → PMDI at index 100</th>
+          <th>Polyol OH → PMDI at index 100</th>
+          <th>Index</th>
+          <th class="n">A / 100 g B</th>
+          <th class="n">50 g B cup</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>BX-01</td><td>1.20 → 18.07 g</td><td>TB-307 + TEROL + PD 230 → 48.17 g</td><td>125</td><td class="n">82.8 g</td><td class="n">41.40 g A</td></tr>
+        <tr><td>BX-02</td><td>5.20 → 78.29 g</td><td>Sucrose OH 400 + TEROL → 46.76 g</td><td>105</td><td class="n">131.3 g</td><td class="n">65.65 g A</td></tr>
+        <tr><td>OC-01</td><td>24.0 → 361.3 g</td><td>Sucrose 33.0 OH 400 → 31.9 g</td><td>100</td><td class="n">393 g</td><td class="n">196.6 g A</td></tr>
+        <tr><td>CC-01</td><td>2.00 → 30.11 g</td><td>TB-307 + TEROL + PD 230 → 45.03 g</td><td>120</td><td class="n">90.2 g</td><td class="n">screen only</td></tr>
+        <tr><td>CC-01 + HFO</td><td>1.40 → 21.08 g</td><td>Same polyols → 45.03 g</td><td>120</td><td class="n">79.3 g on 109.4 g B</td><td class="n">prefer BX-01</td></tr>
+      </tbody>
+    </table>
+    <footer class="doc"><span>BazzLab · Rev. M · Laboratory starting formulas</span><span>1 / 4</span></footer>
+  </section>
+
+  <section class="page">
+    <header class="doc">
+      <div class="brand">
+        <img src="assets/bazzlab.svg" alt="BazzLab" />
+        <div class="wordmark">BAZZ<span>LAB</span></div>
+      </div>
+      <div class="meta"><b>Open cell</b>BX-02 preferred · OC-01 memo screen</div>
+    </header>
+
+    <h2>5. OPEN CELL — BX-02 preferred <span class="badge">POUR THIS</span></h2>
+    <p>Commercial-density open cell when sucrose is on the floor. No HFO. No polyether 1 / 2. TCPP lot is not in this card — TEP + reactive FR do the fire work. Sucrose OH taken as 400 until the lot TDS is in; then re-index.</p>
+    <table>
+      <thead>
+        <tr><th>Ingredient</th><th>Role</th><th class="n">pbw</th><th class="n">g / 50 g B</th><th class="n">OH#</th><th class="n">eq / 100 g</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sucrose / sucrose polyol</td><td>Network that can open and still stand</td><td class="n">38.0</td><td class="n">19.00</td><td class="n">400</td><td class="n">0.2709</td></tr>
+        <tr><td>TEROL 250 / KIMpol PE 103</td><td>Aromatic fire + flow. One drum, not both.</td><td class="n">16.0</td><td class="n">8.00</td><td class="n">260</td><td class="n">0.0742</td></tr>
+        <tr><td>TEP</td><td>Viscosity + phosphorus</td><td class="n">20.9</td><td class="n">10.45</td><td class="n">0</td><td class="n">0</td></tr>
+        <tr><td>Reactive FR</td><td>Bound FR. Re-index if the grade has OH.</td><td class="n">7.0</td><td class="n">3.50</td><td class="n">0*</td><td class="n">0*</td></tr>
+        <tr><td>Ecosurf SA-9</td><td>Emulsifies 5.2 water</td><td class="n">4.0</td><td class="n">2.00</td><td class="n">0</td><td class="n">0</td></tr>
+        <tr><td>Open-cell silicone</td><td>Opens windows</td><td class="n">1.5</td><td class="n">0.75</td><td class="n">0</td><td class="n">0</td></tr>
+        <tr><td>Water</td><td>Main chemical blow. Between memo 24 and Rev. F 4.5</td><td class="n">5.2</td><td class="n">2.60</td><td class="n">6233</td><td class="n">0.5778</td></tr>
+        <tr><td>PC-37</td><td>Blow / cream</td><td class="n">1.70</td><td class="n">0.85</td><td class="n">—</td><td class="n">—</td></tr>
+        <tr><td>CAT-T</td><td>Blow / cream</td><td class="n">1.60</td><td class="n">0.80</td><td class="n">—</td><td class="n">—</td></tr>
+        <tr><td>PC-15</td><td>Gel. Watch for closed windows</td><td class="n">2.80</td><td class="n">1.40</td><td class="n">—</td><td class="n">—</td></tr>
+        <tr><td>BDMAEE or DEDEE</td><td>Window rupture</td><td class="n">0.90</td><td class="n">0.45</td><td class="n">—</td><td class="n">—</td></tr>
+        <tr><td>Biocide</td><td>In-can protection</td><td class="n">0.40</td><td class="n">0.20</td><td class="n">—</td><td class="n">—</td></tr>
+        <tr><td><b>B-side total</b></td><td></td><td class="n"><b>100.00</b></td><td class="n"><b>50.00</b></td><td></td><td class="n"><b>0.9229</b></td></tr>
+        <tr><td><b>A-side PMDI 31.0 % NCO</b></td><td>Index 105</td><td class="n"><b>131.3</b></td><td class="n"><b>65.65</b></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+    <div class="ok">
+      Water 2.60 g ÷ 9.0 = 0.2889 eq → <b>41.10 g</b> PMDI at index 105. Sucrose 19.00 (OH 400) + TEROL 8.00 (OH 260) → <b>24.55 g</b> PMDI at index 105. Cup = <b>50.00 g B + 65.65 g A</b>. If sucrose OH is 350, A ≈ 62 g. If 450, A ≈ 70 g.
+    </div>
+
+    <h2>6. OPEN CELL — OC-01 memo screen (do not pour 1:1)</h2>
+    <table>
+      <thead>
+        <tr><th>Ingredient</th><th class="n">pbw</th><th class="n">g / 50 g B</th><th>Ingredient</th><th class="n">pbw</th><th class="n">g / 50 g B</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sucrose / sucrose polyol</td><td class="n">33.0</td><td class="n">16.50</td><td>Reactive FR</td><td class="n">8.0</td><td class="n">4.00</td></tr>
+        <tr><td>TEP</td><td class="n">17.0</td><td class="n">8.50</td><td>Ecosurf SA-9</td><td class="n">6.0</td><td class="n">3.00</td></tr>
+        <tr><td>Open-cell silicone</td><td class="n">1.2</td><td class="n">0.60</td><td>Water</td><td class="n">24.0</td><td class="n">12.00</td></tr>
+        <tr><td>PC-37</td><td class="n">2.4</td><td class="n">1.20</td><td>CAT-T</td><td class="n">2.4</td><td class="n">1.20</td></tr>
+        <tr><td>PC-15</td><td class="n">4.2</td><td class="n">2.10</td><td>BDMAEE / biocide</td><td class="n">1.0 / 0.8</td><td class="n">0.50 / 0.40</td></tr>
+        <tr><td><b>B-side</b></td><td class="n"><b>100.0</b></td><td class="n"><b>50.00</b></td><td><b>A-side, index 100</b></td><td></td><td class="n"><b>196.6</b></td></tr>
+      </tbody>
+    </table>
+    <div class="warn">
+      Water 12.00 ÷ 9.0 = 1.3333 eq → 180.67 g PMDI. Sucrose 16.50 · OH 400 · EW 140.25 → 15.94 g PMDI. Total <b>196.6 g A</b>. The old 20–28 g A charge never paid the water.
+    </div>
+
+    <h2>7. OPEN CELL — screening alternatives (change one variable)</h2>
+    <table>
+      <thead>
+        <tr><th>Code</th><th>Change from BX-02</th><th>Purpose</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>BX-02</td><td>Control · 50.00 g B + 65.65 g A</td><td>Baseline 16–22 kg/m³</td></tr>
+        <tr><td>BX-02a</td><td>Water 5.20 → 4.80; TEP +0.40</td><td>Higher density / more stable rise</td></tr>
+        <tr><td>BX-02b</td><td>Water 5.20 → 5.60; TEP −0.40 · re-index A (+6.0 g / 100 g B)</td><td>Lower density / more opening</td></tr>
+        <tr><td>BX-02c</td><td>PC-15 2.80 → 2.60</td><td>If windows stay too tight</td></tr>
+        <tr><td>BX-02d</td><td>PC-37 + CAT-T each +0.15</td><td>If cream is slower than 4 s</td></tr>
+        <tr><td>OC-01</td><td>Memo screen · 196.6 g A on 50 g B</td><td>Only after BX-02; do not blend the two B-sides</td></tr>
+      </tbody>
+    </table>
+
+    <h2>8. OPEN CELL — initial target window</h2>
+    <table>
+      <thead>
+        <tr><th>Measurement</th><th>BX-02</th><th>OC-01 screen</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>A:B by weight</td><td>65.65 : 50.00 · not 1:1</td><td>196.6 : 50.00 · not 1:1</td></tr>
+        <tr><td>Cream / rise / tack-free</td><td>2–4 s / record / record</td><td>2–5 s / 8–15 s / 10–20 s</td></tr>
+        <tr><td>Free-rise density</td><td>16–22 kg/m³</td><td>7–12 kg/m³</td></tr>
+        <tr><td>Open-cell content</td><td>&gt; 95 %</td><td>&lt; 10 % closed</td></tr>
+        <tr><td>Collapse</td><td>None. If collapse: +0.15 g PC-15 on the 50 g cup</td><td>None</td></tr>
+      </tbody>
+    </table>
+    <footer class="doc"><span>BazzLab · Rev. M · Laboratory starting formulas</span><span>2 / 4</span></footer>
+  </section>
+
+  <section class="page">
+    <header class="doc">
+      <div class="brand">
+        <img src="assets/bazzlab.svg" alt="BazzLab" />
+        <div class="wordmark">BAZZ<span>LAB</span></div>
+      </div>
+      <div class="meta"><b>Closed cell</b>BX-01 preferred · HFO mandatory</div>
+    </header>
+
+    <h2>10. CLOSED CELL — BX-01 preferred <span class="badge">POUR FIRST</span></h2>
+    <p>Use one high-OH polyester (ISOEXTER TB-307 <i>or</i> KIMpol PE 104, midpoint OH 305, f = 2.5) and one flow polyester (TEROL 250 <i>or</i> KIMpol PE 103, midpoint OH 260). Do not charge all four drums into one cup. HFO-1233zd(E) is mandatory. Water is 1.20 because HFO does the blow — do not raise water to force 1:1.</p>
+    <table>
+      <thead>
+        <tr><th>#</th><th>Ingredient</th><th>Role</th><th class="n">pbw</th><th class="n">g / 50 g B</th><th class="n">OH#</th><th class="n">eq / 100 g</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>TB-307 / PE 104 — write which</td><td>Rigid network. Replaces Mannich / CREAPOL 326</td><td class="n">41.3</td><td class="n">20.65</td><td class="n">305</td><td class="n">0.2245</td></tr>
+        <tr><td>2</td><td>TEROL 250 / PE 103 — write which</td><td>Flow + aromatic fire. Replaces CREAPOL 1500</td><td class="n">24.8</td><td class="n">12.40</td><td class="n">260</td><td class="n">0.1149</td></tr>
+        <tr><td>3</td><td>CREAPOL PD 230</td><td>Toughness trim. No substitute on the floor</td><td class="n">4.0</td><td class="n">2.00</td><td class="n">225</td><td class="n">0.0160</td></tr>
+        <tr><td>4</td><td>TCPP lot XLT20260701</td><td>Halogen FR · 0 OH. Terol already does part of the fire job</td><td class="n">6.0</td><td class="n">3.00</td><td class="n">0</td><td class="n">0</td></tr>
+        <tr><td>5</td><td>TEP</td><td>Viscosity cut for thick TB-307 / PE 104</td><td class="n">4.0</td><td class="n">2.00</td><td class="n">0</td><td class="n">0</td></tr>
+        <tr><td>6</td><td>Reactive FR</td><td>Bound phosphorus. Re-index if it has OH</td><td class="n">2.0</td><td class="n">1.00</td><td class="n">0*</td><td class="n">0*</td></tr>
+        <tr><td>7</td><td>Emulsifier</td><td>Holds 1.20 water in the polyester</td><td class="n">1.75</td><td class="n">0.875</td><td class="n">0</td><td class="n">0</td></tr>
+        <tr><td>8</td><td>Closed-cell silicone</td><td>Sealed cells. Not the open-cell grade</td><td class="n">1.5</td><td class="n">0.75</td><td class="n">0</td><td class="n">0</td></tr>
+        <tr><td>9</td><td>Water</td><td>Nucleation only. Do not go back to 1.75 or 2.09</td><td class="n">1.20</td><td class="n">0.60</td><td class="n">6233</td><td class="n">0.1333</td></tr>
+        <tr><td>10</td><td>PC-15</td><td>Gel</td><td class="n">1.45</td><td class="n">0.725</td><td class="n">—</td><td class="n">—</td></tr>
+        <tr><td>11</td><td>DABCO 2040</td><td>Gel / cure</td><td class="n">1.10</td><td class="n">0.550</td><td class="n">—</td><td class="n">—</td></tr>
+        <tr><td>12</td><td>CAT-T</td><td>Cream / blow</td><td class="n">0.55</td><td class="n">0.275</td><td class="n">—</td><td class="n">—</td></tr>
+        <tr><td>13</td><td>PC-37</td><td>Cream / blow</td><td class="n">0.35</td><td class="n">0.175</td><td class="n">—</td><td class="n">—</td></tr>
+        <tr><td>14</td><td><b>HFO-1233zd(E)</b></td><td>Mandatory blowing gas. Last, 15–18 °C, cap</td><td class="n"><b>10.0</b></td><td class="n"><b>5.00</b></td><td class="n">0</td><td class="n">0</td></tr>
+        <tr><td></td><td><b>B-side total</b></td><td></td><td class="n"><b>100.00</b></td><td class="n"><b>50.000</b></td><td></td><td class="n"><b>0.4888</b></td></tr>
+        <tr><td>A</td><td><b>PMDI 31.0 % NCO</b></td><td>Index 125</td><td class="n"><b>82.8</b></td><td class="n"><b>41.40</b></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+    <div class="ok">
+      Water 0.60 g ÷ 9.0 → <b>11.29 g</b> PMDI at index 125. Polyols 20.65 + 12.40 + 2.00 → <b>30.11 g</b> PMDI at index 125. Cup = <b>50.00 g B + 41.40 g A</b>. If the flow drum is TEROL 250 at EW 224.4, A is about 41.05 g. Hood on. Mix 4–5 s.
+    </div>
+    <div class="warn">
+      Rev. F CC-F1 (TB-307 40.06 + PE 104 18.03 + TEROL 10.01 + PE 103 5.01 + water 2.09 + HFO 9.5 + 50 g A) is withdrawn. The 1:1 index was obtained by stacking equivalent drums and adding water. That is not the catalyst-package method.
+    </div>
+
+    <h2>11. CLOSED CELL — screening alternatives (from BX-01, not from Rev. F CC-F2/F3)</h2>
+    <table>
+      <thead>
+        <tr><th>Code</th><th>Change from BX-01</th><th>Purpose</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>BX-01</td><td>Control · 50.00 g B (5.00 g HFO in) + 41.40 g A</td><td>Does it seal at 32–38 kg/m³?</td></tr>
+        <tr><td>BX-01a</td><td>HFO 10.0 → 11.0 / water 1.20 → 1.10 · re-index A slightly down</td><td>Lighter / more physical blow</td></tr>
+        <tr><td>BX-01b</td><td>CAT-T +0.15 / PC-15 +0.15</td><td>If cream &gt; 6 s or gel &gt; 15 s</td></tr>
+        <tr><td>BX-01c</td><td>CAT-T −0.10 / PC-15 −0.10</td><td>If it scorches or snaps too fast</td></tr>
+        <tr><td>CC-01</td><td>Older 90:100 screen + HFO 10 / water 1.4 → 79.3 g A / 109.4 g B</td><td>Fallback only if BX-01 is too tight</td></tr>
+      </tbody>
+    </table>
+
+    <h2>12. CLOSED CELL — initial target window</h2>
+    <div class="cols">
+      <table class="kvs">
+        <tbody>
+          <tr><td>A:B by weight</td><td>41.40 : 50.00 · ≈ 83 : 100</td></tr>
+          <tr><td>Nominal NCO index</td><td>125 (calc.)</td></tr>
+          <tr><td>Cream / gel / tack-free</td><td>3–6 s / 8–15 s / 15–28 s</td></tr>
+          <tr><td>Free-rise density</td><td>32–38 kg/m³</td></tr>
+        </tbody>
+      </table>
+      <table class="kvs">
+        <tbody>
+          <tr><td>Closed-cell content</td><td>&gt; 90 %</td></tr>
+          <tr><td>24 h shrinkage</td><td>No visible shrink / distortion</td></tr>
+          <tr><td>Cell structure</td><td>Fine, sealed, uniform</td></tr>
+          <tr><td>HFO handling</td><td>B cup 15–18 °C · weigh last · cap</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>13. Recommended first cup-test sequence</h2>
+    <table>
+      <thead>
+        <tr><th>Order</th><th>Trial</th><th>Cup</th><th>Purpose</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>BX-01</td><td>50.00 g B + 41.40 g A</td><td>Preferred closed-cell control. HFO in.</td></tr>
+        <tr><td>2</td><td>BX-01 repeat ×3</td><td>Same</td><td>Repeatability before any catalyst change.</td></tr>
+        <tr><td>3</td><td>BX-02</td><td>50.00 g B + 65.65 g A</td><td>Preferred open cell if sucrose is on the floor. No HFO.</td></tr>
+        <tr><td>4</td><td>OC-01</td><td>50.00 g B + 196.6 g A</td><td>Memo screen only. Do not blend with BX-02.</td></tr>
+        <tr><td>5</td><td>OC-F1</td><td>50.00 g B only</td><td>Wait for the three polyol OH# values before weighing A.</td></tr>
+      </tbody>
+    </table>
+    <footer class="doc"><span>BazzLab · Rev. M · Laboratory starting formulas</span><span>3 / 4</span></footer>
+  </section>
+
+  <section class="page">
+    <header class="doc">
+      <div class="brand">
+        <img src="assets/bazzlab.svg" alt="BazzLab" />
+        <div class="wordmark">BAZZ<span>LAB</span></div>
+      </div>
+      <div class="meta"><b>Method and record</b>50 g cups · one variable at a time</div>
+    </header>
+
+    <h2>14. Cup-test method</h2>
+    <table>
+      <thead>
+        <tr><th>Step</th><th>Method</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Condition A at 21–23 °C. Closed-cell B is chilled to 15–18 °C after HFO. Open-cell A and B stay 21–23 °C. Record actual temperatures.</td></tr>
+        <tr><td>2</td><td>Dry cups. Weigh to 0.01 g. Prepare B exactly to 50.00 g in the order on the card. Water before catalysts.</td></tr>
+        <tr><td>3</td><td>Homogenize B. For BX-01: HFO last, cap at once, hood on. If HFO flashes off, recap and reweigh — do not add water to compensate.</td></tr>
+        <tr><td>4</td><td>Weigh A separately: <b>41.40 g</b> (BX-01), <b>65.65 g</b> (BX-02), or <b>196.6 g</b> (OC-01). Do not default to 50 g A.</td></tr>
+        <tr><td>5</td><td>Pour A into B. Mix 4–5 s at 2 500–3 000 rpm. Same mixer and time on every comparison cup.</td></tr>
+        <tr><td>6</td><td>Clock cream, gel/string, rise and tack-free from mix start.</td></tr>
+        <tr><td>7</td><td>Do not disturb after cream. Cut and inspect at 24 h.</td></tr>
+        <tr><td>8</td><td>Record free-rise density, cell structure, collapse, shrinkage, friability and scorch.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>15. Trial record sheet</h2>
+    <table>
+      <thead>
+        <tr><th>Field</th><th>Result</th><th>Field</th><th>Result</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Trial code</td><td></td><td>Date / operator</td><td></td></tr>
+        <tr><td>B-side mass</td><td>50.00 g</td><td>A-side mass (write)</td><td></td></tr>
+        <tr><td>A:B ratio</td><td></td><td>Calculated index</td><td></td></tr>
+        <tr><td>High-OH drum</td><td>TB-307 / PE 104</td><td>Flow drum</td><td>TEROL 250 / PE 103</td></tr>
+        <tr><td>Sucrose grade / OH#</td><td></td><td>PMDI lot / %NCO</td><td></td></tr>
+        <tr><td>A / B temperature</td><td></td><td>Mix rpm / time</td><td></td></tr>
+        <tr><td>Cream</td><td>s</td><td>Gel / string</td><td>s</td></tr>
+        <tr><td>Rise</td><td>s</td><td>Tack-free</td><td>s</td></tr>
+        <tr><td>Free-rise density</td><td>kg/m³</td><td>Open / closed observation</td><td></td></tr>
+        <tr><td>24 h shrinkage</td><td></td><td>Collapse / scorch / friability</td><td></td></tr>
+        <tr><td>Comments</td><td colspan="3"></td></tr>
+      </tbody>
+    </table>
+
+    <h2>16. OPEN CELL — OC-F1 polyether screen (Rev. F B-side kept; A-side not fixed)</h2>
+    <p>Water 4.5 already needs 33.9 g PMDI at index 100 before any polyol OH. Do not weigh 50 g A until the three OH# values arrive.</p>
+    <table>
+      <thead>
+        <tr><th>Ingredient</th><th class="n">pbw</th><th class="n">g / 50 g B</th><th>Ingredient</th><th class="n">pbw</th><th class="n">g / 50 g B</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Polyether polyol 1</td><td class="n">24.0</td><td class="n">12.00</td><td>Polyether polyol 2</td><td class="n">22.0</td><td class="n">11.00</td></tr>
+        <tr><td>Sucrose / polyether polyol</td><td class="n">15.0</td><td class="n">7.50</td><td>CREAPOL 1500</td><td class="n">5.0</td><td class="n">2.50</td></tr>
+        <tr><td>TCPP lot XLT20260701</td><td class="n">23.0</td><td class="n">11.50</td><td>Water</td><td class="n">4.5</td><td class="n">2.25</td></tr>
+        <tr><td>Blow pack PC-37 / CAT-T / BDMAEE</td><td class="n">1.5</td><td class="n">0.75</td><td>PC-15</td><td class="n">1.0</td><td class="n">0.50</td></tr>
+        <tr><td>DABCO 2040</td><td class="n">0.5</td><td class="n">0.25</td><td>Emulsifier / opener</td><td class="n">2.0</td><td class="n">1.00</td></tr>
+        <tr><td>Open-cell silicone</td><td class="n">1.5</td><td class="n">0.75</td><td><b>B-side · A not fixed</b></td><td class="n"><b>100.0</b></td><td class="n"><b>50.00</b></td></tr>
+      </tbody>
+    </table>
+
+    <h2>17. Critical inputs still to confirm</h2>
+    <table>
+      <thead>
+        <tr><th>Input</th><th>Why it matters</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Which high-OH drum is open</td><td>TB-307 and PE 104 are alternatives, not a stacked pair. Write the label before the first BX-01 cup.</td></tr>
+        <tr><td>Which flow drum is open</td><td>TEROL 250 vs PE 103. If the drum is TEROL 250 at EW 224.4, BX-01 A is about 41.05 g on 50 g B.</td></tr>
+        <tr><td>Sucrose / sucrose-polyol OH#</td><td>BX-02 and OC-01 A-sides move if the lot is not 400. Water term does not change.</td></tr>
+        <tr><td>OC-F1 Polyether 1 / 2 OH#</td><td>Required before any A-side is assigned to the Rev. F polyether screen.</td></tr>
+        <tr><td>Actual PMDI %NCO from COA</td><td>Recalculate EW = 4 200 / %NCO. Do not keep 135.5 if the lot is not 31.0 %.</td></tr>
+        <tr><td>Exact silicone grades</td><td>Open-cell vs closed-cell. Do not swap them.</td></tr>
+        <tr><td>Reactive FR OH</td><td>Include in the index if the selected grade carries OH.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="navy">
+      Change one variable at a time. If HFO or water changes, keep the B-side intent clear and re-index A — do not hold 50 g A. High-water open cell is never 1:1. Closed-cell cups without HFO are not valid on this pack.
+    </div>
+    <p class="tiny" style="margin-top:8px;">Prepared 2 Oct 2026 from the BazzLab pack, the catalyst-package water-then-polyol method, PO 1009433 cats, and the TCPP COA used in Rev. F. The website pack is Rev. M. ISOEXTER, TEROL, KIMpol, CREAPOL, DABCO, Honeywell and Elite Materials names remain the property of their owners.</p>
+    <footer class="doc"><span>BazzLab · Rev. M · Laboratory starting formulas</span><span>4 / 4</span></footer>
+  </section>
+</body>
+</html>

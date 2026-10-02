@@ -823,6 +823,20 @@
     }
     .weigh-actual { min-width: 72px; background: #fffef6 !important; }
 
+    .status-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 10px 0 12px;
+    }
+    .status-grid .box { margin: 0; }
+    .status-grid h3 { font-size: 13px; }
+    .status-grid p { font-size: 13px; margin: 0; }
+    .record-line td:last-child { min-height: 22px; background: #fffef6; }
+    @media (max-width: 700px) {
+      .status-grid { grid-template-columns: 1fr; }
+    }
+
     body.pdf-capture {
       overflow: auto !important;
     }
